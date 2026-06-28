@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ms Lê Hằng English - IELTS Reading & Vocabulary Mock Test</title>
+    <!-- Tailwind CSS for modern layouts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Nunito & Quicksand for playful Duolingo vibe -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Nunito', 'Quicksand', sans-serif;
+            background: linear-gradient(-45deg, #FFF0F5, #FFE4E1, #FFF5EE, #FFDEE9, #E6E6FA);
+            background-size: 400% 400%;
+            animation: gradientAnimation 12s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SVG Decorative Pattern Background Overlay */
+        .bg-pattern-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23ffb6c1' fill-opacity='0.15'%3E%3Cpath d='M10 10c2 0 3-1 3-3s-1-3-3-3-3 1-3 3 1 3 3 3zm20 20c2 0 3-1 3-3s-1-3-3-3-3 1-3 3 1 3 3 3zm20-20c2 0 3-1 3-3s-1-3-3-3-3 1-3 3 1 3 3 3zM10 50c2 0 3-1 3-3s-1-3-3-3-3 1-3 3 1 3 3 3zm40 0c2 0 3-1 3-3s-1-3-3-3-3 1-3 3 1 3 3 3z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Gamified 3D Soft Buttons (Blooket/Duolingo Style) */
+        .btn-3d {
+            position: relative;
+            border-bottom: 5px solid rgba(0, 0, 0, 0.18);
+            transition: all 0.1s ease;
+        }
+        .btn-3d:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+        .btn-3d-correct {
+            background-color: #00D26A !important;
+            border-color: #00A854 !important;
+            color: white !important;
+        }
+        .btn-3d-wrong {
+            background-color: #FF4757 !important;
+            border-color: #D63031 !important;
+            color: white !important;
+        }
+
+        /* Continuous independent scrollable containers */
+        .split-viewport {
+            height: calc(100vh - 150px);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #FFB6C1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #FF69B4;
+        }
+
+        /* Interactive Animations */
+        .animate-shake {
+            animation: shakeEffect 0.4s ease-in-out;
+        }
+        @keyframes shakeEffect {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .animate-pop {
+            animation: popEffect 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        /* Flash locator animation for evidence paragraphs */
+        .flash-evidence {
+            animation: flashHighlight 3s ease-in-out;
+            border-radius: 12px;
+        }
+        @keyframes flashHighlight {
+            0% { background-color: rgba(255, 105, 180, 0.4); box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); }
+            50% { background-color: rgba(255, 182, 193, 0.6); box-shadow: 0 0 25px rgba(255, 182, 193, 0.8); }
+            100% { background-color: transparent; box-shadow: none; }
+        }
+    </style>
+</head>
+<body class="bg-pattern-overlay min-h-screen flex flex-col overflow-hidden text-gray-800">
+
+    <!-- CANVAS FOR CONFETTI PAPERS -->
+    <canvas id="confetti-canvas" class="pointer-events-none fixed inset-0 w-full h-full z-50"></canvas>
+
+    <!-- HEADER NAVIGATION CONTROL BAR -->
+    <header class="bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-md px-6 py-3 flex flex-wrap items-center justify-between z-40">
+        <div class="flex items-center gap-3">
+            <div class="bg-gradient-to-br from-pink-500 to-purple-600 text-white p-2.5 rounded-2xl shadow-md border-b-4 border-purple-800">
+                <i class="fa-solid fa-star-half-stroke text-2xl animate-spin-slow"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-black text-pink-600 tracking-wide">IELTS READING MOCK TEST</h1>
+                <p class="text-xs font-bold text-gray-500">Giáo viên tạo: <span class="text-purple-600 font-extrabold">Ms Lê Hằng English (IELTS 9.0 Master)</span></p>
+            </div>
+        </div>
+
+        <!-- TIMER MANAGEMENT ENGINE -->
+        <div class="flex items-center gap-4 my-2 lg:my-0">
+            <button id="timer-control-btn" class="bg-purple-600 text-white font-black px-5 py-2 rounded-2xl btn-3d hover:bg-purple-500 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-circle-play"></i> <span id="timer-status-text">BẮT ĐẦU TÍNH GIỜ LÀM BÀI</span>
+            </button>
+            <div class="bg-pink-100 border-2 border-pink-300 text-pink-600 px-4 py-1.5 rounded-2xl font-black text-lg flex items-center gap-2 shadow-inner">
+                <i class="fa-solid fa-stopwatch text-xl animate-pulse"></i>
+                <span id="timer-countdown-clock">25:00</span>
+            </div>
+        </div>
+
+        <!-- LIVE POINT MONITOR & SUBMIT TRIGGER -->
+        <div class="flex items-center gap-4">
+            <div class="bg-amber-100 border-2 border-amber-300 text-amber-700 font-black px-4 py-1.5 rounded-2xl text-sm flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-trophy text-amber-500 text-lg"></i> Score: <span id="header-score-tracker" class="text-lg text-amber-900">0</span>/45
+            </div>
+            <button id="main-submission-btn" class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-black px-6 py-2.5 rounded-2xl border-b-4 border-emerald-700 btn-3d text-sm uppercase tracking-wider">
+                <i class="fa-solid fa-paper-plane mr-1"></i> Nộp Bài
+            </button>
+        </div>
+    </header>
+
+    <!-- EXERCISE TABS CONTAINER MENU -->
+    <nav class="bg-white/50 backdrop-blur-sm px-6 py-2 flex flex-wrap gap-2 border-b border-pink-100">
+        <button id="tab-btn-1" onclick="switchActiveTab(1)" class="px-4 py-2 rounded-xl font-black text-sm border-b-4 bg-pink-500 text-white border-pink-700 transition-all flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-dumbbell"></i> Ex 16: Get Fit Guide
+        </button>
+        <button id="tab-btn-2" onclick="switchActiveTab(2)" class="px-4 py-2 rounded-xl font-black text-sm border-b-4 bg-white text-gray-600 border-gray-300 transition-all flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-hand-holding-heart"></i> Ex 17: Teen Life Balance
+        </button>
+        <button id="tab-btn-3" onclick="switchActiveTab(3)" class="px-4 py-2 rounded-xl font-black text-sm border-b-4 bg-white text-gray-600 border-gray-300 transition-all flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-book-open-reader"></i> Ex 18-20: Reading Comprehension
+        </button>
+    </nav>
+
+    <!-- MAIN APP SPLIT PANEL INTERFACE -->
+    <main class="flex-grow flex flex-col md:flex-row split-viewport p-4 gap-4">
+        
+        <!-- LEFT SCREEN: PASSAGE & BLANK DATA VIEWPORT -->
+        <section class="w-full md:w-1/2 bg-white/95 backdrop-blur-md rounded-3xl shadow-xl border-4 border-pink-100 p-5 flex flex-col overflow-hidden">
+            <div class="flex items-center justify-between pb-3 border-b-2 border-pink-100 mb-3">
+                <h2 class="text-lg font-black text-purple-700 flex items-center gap-2">
+                    <i class="fa-solid fa-file-lines text-pink-500"></i> Reading Material & Advertisements
+                </h2>
+                <span class="text-xs font-bold text-pink-500 bg-pink-50 border border-pink-200 px-3 py-1 rounded-xl">
+                    ✨ Bôi đen chữ để tự động Highlight hồng nhạt 🌸
+                </span>
+            </div>
+            
+            <!-- LEFT CONTAINER VIEWS WRAPPER -->
+            <div id="left-passage-viewport" class="flex-grow overflow-y-auto custom-scrollbar pr-2 space-y-6">
+                <!-- Dynamically generated through JavaScript architecture -->
+            </div>
+        </section>
+
+        <!-- RIGHT SCREEN: DYNAMIC GAMIFIED EXERCISES -->
+        <section class="w-full md:w-1/2 bg-white/95 backdrop-blur-md rounded-3xl shadow-xl border-4 border-pink-100 p-5 flex flex-col overflow-hidden">
+            
+            <!-- EXERCISE HEADER TRACKERS -->
+            <div class="mb-3">
+                <div class="flex justify-between items-center mb-1">
+                    <h2 class="text-lg font-black text-purple-700 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i> Interactive Exercises
+                    </h2>
+                    <span id="tab-completion-badge" class="text-xs font-black text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-0.5 rounded-lg">Tab Progress: 0%</span>
+                </div>
+                <div class="w-full bg-gray-100 h-3 rounded-full overflow-hidden border">
+                    <div id="tab-completion-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 to-green-500 w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <!-- RIGHT CONTAINER VIEWS WRAPPER -->
+            <div id="right-exercises-viewport" class="flex-grow overflow-y-auto custom-scrollbar pr-2 space-y-6">
+                <!-- Dynamic Questions items go here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- COMPLETE SUMMARY RESULTS SCOREBOARD MODAL -->
+    <div id="results-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl border-8 border-pink-300 shadow-2xl max-w-xl w-full p-6 text-center relative animate-pop">
+            <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-amber-400 rounded-full flex items-center justify-center mx-auto -mt-16 border-4 border-white shadow-md">
+                <i class="fa-solid fa-graduation-cap text-white text-4xl"></i>
+            </div>
+            
+            <h3 class="text-2xl font-black text-purple-900 mt-4 tracking-wide uppercase">BẢNG KẾT QUẢ THI</h3>
+            <p class="text-gray-400 text-xs font-bold uppercase">Ms Lê Hằng English Academic Evaluation Center</p>
+
+            <div class="my-5 bg-gradient-to-r from-pink-50 to-purple-50 border-2 border-pink-200 rounded-2xl p-4 inline-block shadow-inner">
+                <span id="modal-score-string" class="text-5xl font-black text-purple-700">0 / 45</span>
+                <p class="text-xs font-black text-pink-500 mt-1 uppercase tracking-wider">Tổng Số Câu Đúng</p>
+            </div>
+
+            <div class="bg-pink-100/50 border-l-4 border-pink-500 p-4 rounded-xl text-left font-bold text-gray-700 text-base my-3 italic">
+                <i class="fa-solid fa-quote-left text-pink-400 mr-1 text-xl"></i>
+                <span id="modal-performance-feedback">Đang phân tích điểm...</span>
+            </div>
+
+            <div class="flex gap-3 mt-6">
+                <button onclick="toggleModalVisibility(false)" class="flex-1 bg-gray-500 text-white font-black py-3 rounded-xl border-b-4 border-gray-700 btn-3d text-sm uppercase">
+                    Xem Lại Lỗi Sai
+                </button>
+                <button onclick="resetFullApplicationState()" class="flex-1 bg-pink-500 text-white font-black py-3 rounded-xl border-b-4 border-pink-700 btn-3d text-sm uppercase">
+                    Làm Lại Đề Thi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN DATA ENGINE & SCRIPTS INTEGRATION -->
+    <script>
+        // CORE APPLICATION DATA DIRECTORY (100% DATASAFE COMPLIANT)
+        const appDataset = {
+            1: {
+                title: "Exercise 16: Advertisement/Announcement Blanks",
+                subtitle: "Bài tập Tiếng Anh 9 (Global Success) - Trang 13",
+                passages: [
+                    {
+                        id: "ex16-p1",
+                        heading: "❶ Teens! Get Fit and Feel Great! ⚡",
+                        paragraphs: [
+                            {
+                                id: "ex16-p1-s1",
+                                text: "Want to be healthier and have more energy? Our special guide is just for teens! Learn how to (1)_______ good choices and feel awesome every day.",
+                                translation: "Muốn khỏe mạnh hơn và có nhiều năng lượng hơn? Hướng dẫn đặc biệt này của chúng tôi là dành riêng cho thanh thiếu niên! Hãy học cách đưa ra những lựa chọn tốt và cảm thấy tuyệt vời mỗi ngày."
+                            },
+                            {
+                                id: "ex16-p1-s2",
+                                text: "What's Inside:<br>1. Get Moving: If you exercise regularly, you'll get (2)_______ and feel better.<br>2. Eat Right: You should follow our (3)_______ tips to eat healthy foods and avoid junk food.<br>3. Feel Happy: Learn (4)______ to relax and stay positive.",
+                                translation: "Bên trong có gì:<br>1. Hãy vận động: Nếu bạn tập thể dục đều đặn, bạn sẽ trở nên khỏe mạnh hơn và cảm thấy tốt hơn.<br>2. Ăn uống đúng cách: Bạn nên làm theo các lời khuyên của chúng tôi để ăn thực phẩm lành mạnh và tránh xa đồ ăn vặt.<br>3. Cảm thấy hạnh phúc: Học cách để thư giãn và luôn sống tích cực."
+                            },
+                            {
+                                id: "ex16-p1-s3",
+                                text: "Bonus: Get the guide today and start your healthy journey!",
+                                translation: "Phần thưởng thêm: Nhận ngay bản hướng dẫn hôm nay và bắt đầu hành trình sống khỏe mạnh của bạn!"
+                            }
+                        ],
+                        glossary: [
+                            { word: "Healthy", pos: "adj", meaning: "Khỏe mạnh, lành mạnh", synonym: "Fit / In good shape" },
+                            { word: "Energy", pos: "n", meaning: "Năng lượng, sức lực", synonym: "Vigor / Vitality" },
+                            { word: "Choice", pos: "n", meaning: "Sự lựa chọn", synonym: "Option / Decision" },
+                            { word: "Regularly", pos: "adv", meaning: "Đều đặn, thường xuyên", synonym: "Frequently / Constantly" },
+                            { word: "Avoid", pos: "v", meaning: "Tránh né, hạn chế", synonym: "Shun / Stay away from" },
+                            { word: "Positive", pos: "adj", meaning: "Tích cực, lạc quan", synonym: "Optimistic / Cheerful" }
+                        ]
+                    },
+                    {
+                        id: "ex16-p2",
+                        heading: "❷ Get More Energy, Feel Amazing! 🌟",
+                        paragraphs: [
+                            {
+                                id: "ex16-p2-s1",
+                                text: "Feeling tired lately? No problem! Our plan will help you feel great again. When you follow our simple advice, you'll have more (1)_______ and focus.",
+                                translation: "Dạo này bạn cảm thấy mệt mỏi ư? Không vấn đề gì cả! Kế hoạch của chúng tôi sẽ giúp bạn cảm thấy tuyệt vời trở lại. Khi bạn làm theo lời khuyên đơn giản của chúng tôi, bạn sẽ có nhiều năng lượng và sự tập trung hơn."
+                            },
+                            {
+                                id: "ex16-p2-s2",
+                                text: "Here's the secret:<br>• Eat plenty (2)______ fruits, vegetables, and good foods.<br>• Exercise regularly - it's fun and good for you!<br>• Make sure you get enough sleep every night.",
+                                translation: "Đây là bí mật:<br>• Ăn nhiều trái cây, rau củ và các thực phẩm tốt.<br>• Tập thể dục thường xuyên - hoạt động này vừa vui lại vừa tốt cho bạn!<br>• Hãy đảm bảo rằng bạn ngủ đủ giấc mỗi đêm."
+                            },
+                            {
+                                id: "ex16-p2-s3",
+                                text: "A healthy diet is really (3)______. We'll show you how to eat better and get moving. To improve your life, try these easy changes today. Sign up now and discover (4)_______ happier, healthier you!",
+                                translation: "Một chế độ ăn uống lành mạnh thực sự rất quan trọng. Chúng tôi sẽ chỉ cho bạn cách ăn uống tốt hơn và bắt đầu vận động. Để cải thiện cuộc sống, hãy thử những thay đổi dễ dàng này ngay hôm nay. Hãy đăng ký ngay bây giờ và khám phá một phiên bản chính bạn hạnh phúc hơn, khỏe mạnh hơn!"
+                            }
+                        ],
+                        glossary: [
+                            { word: "Focus", pos: "n/v", meaning: "Sự tập trung", synonym: "Concentration" },
+                            { word: "Advice", pos: "n", meaning: "Lời khuyên", synonym: "Guidance / Tips" },
+                            { word: "Plenty of", pos: "det", meaning: "Nhiều, phong phú", synonym: "A lot of / Abundant" },
+                            { word: "Diet", pos: "n", meaning: "Chế độ ăn uống", synonym: "Eating pattern" },
+                            { word: "Improve", pos: "v", meaning: "Cải thiện, nâng cao", synonym: "Enhance / Better" },
+                            { word: "Discover", pos: "v", meaning: "Khám phá, tìm ra", synonym: "Find out / Uncover" }
+                        ]
+                    }
+                ],
+                questions: [
+                    { id: "16-1", type: "mcq", text: "❶ Question 1 (Fit and Feel Great)", options: ["make", "take", "do", "look"], correct: "make", explanation: "ĐÁP ÁN: A. make<br>ĐOẠN CHỨA ĐÁP ÁN: Learn how to (1)_______ good choices and feel awesome every day.<br>DỊCH NGHĨA: Hãy học cách đưa ra những lựa chọn tốt và cảm thấy tuyệt vời mỗi ngày.<br>CỤM TỪ ĐỒNG NGHĨA/CẤU TRÚC: Cụm từ cố định (Collocation): 'make choices' nghĩa là đưa ra lựa chọn. Loại các động từ khác vì không đi kèm với 'choices' trong ngữ cảnh này.", targetPara: "ex16-p1-s1" },
+                    { id: "16-2", type: "mcq", text: "❶ Question 2 (Fit and Feel Great)", options: ["strongly", "strengthen", "strength", "stronger"], correct: "stronger", explanation: "ĐÁP ÁN: D. stronger<br>ĐOẠN CHỨA ĐÁP ÁN: If you exercise regularly, you'll get (2)_______ and feel better.<br>DỊCH NGHĨA: Nếu bạn tập thể dục đều đặn, bạn sẽ trở nên khỏe mạnh hơn và cảm thấy tốt hơn.<br>CỤM TỪ ĐỒNG NGHĨA/CẤU TRÚC: Cấu trúc song hành với 'feel better' (tính từ so sánh hơn). Động từ liên kết 'get' + tính từ so sánh hơn 'stronger' để chỉ sự phát triển thể chất.", targetPara: "ex16-p1-s2" },
+                    { id: "16-3", type: "mcq", text: "❶ Question 3 (Fit and Feel Great)", options: ["no article", "a", "the", "an"], correct: "no article", explanation: "ĐÁP ÁN: A. no article<br>ĐOẠN CHỨA ĐÁP ÁN: You should follow our (3)_______ tips to eat healthy foods...<br>DỊCH NGHĨA: Bạn nên làm theo các lời khuyên của chúng tôi để ăn thực phẩm lành mạnh...<br>CỤM TỪ ĐỒNG NGHĨA/CẤU TRÚC: Phía trước đã có tính từ sở hữu 'our'. Nguyên tắc ngữ pháp: Không đặt mạo từ (a/an/the) đứng giữa tính từ sở hữu và danh từ.", targetPara: "ex16-p1-s2" },
+                    { id: "16-4", type: "mcq", text: "❶ Question 4 (Fit and Feel Great)", options: ["why", "where", "what", "how"], correct: "how", explanation: "ĐÁP ÁN: D. how<br>ĐOẠN CHỨA ĐÁP ÁN: Learn (4)______ to relax and stay positive.<br>DỊCH NGHĨA: Học cách để thư giãn và luôn sống tích cực.<br>CỤM TỪ ĐỒNG NGHĨA/CẤU TRÚC: Cấu trúc từ nghi vấn: 'Learn how + to-V' chỉ phương thức, cách thức thực hiện hành động (học cách làm gì).", targetPara: "ex16-p1-s2" },
+                    { id: "16-5", type: "mcq", text: "❷ Question 1 (Get More Energy)", options: ["energy", "balance", "priority", "distraction"], correct: "energy", explanation: "ĐÁP ÁN: A. energy<br>ĐOẠN CHỨA ĐÁP ÁN: When you follow our simple advice, you'll have more (1)_______ and focus.<br>DỊCH NGHĨA: Khi bạn làm theo lời khuyên đơn giản của chúng tôi, bạn sẽ có nhiều năng lượng và sự tập trung hơn.<br>CỤM TỪ ĐỒNG NGHĨA/CẤU TRÚC: Đồng nhất với tiêu đề 'Get More Energy'. Focus = concentration; Energy = sức lực.", targetPara: "ex16-p2-s1" },
+                    { id: "16-6", type: "mcq", text: "❷ Question 2 (Get More Energy)", options: ["about", "to", "of", "with"], correct: "of", explanation: "ĐÁP ÁN: C. of<br>ĐOẠN CHỨA ĐÁP ÁN: Eat plenty (2)______ fruits, vegetables, and good foods.<br>DỊCH NGHĨA: Ăn nhiều trái cây, rau củ và các thực phẩm tốt.<br>CỤM TỪ ĐỒNG NGHĨA/CẤU TRÚC: Cấu trúc lượng từ cố định: 'plenty of + N' có nghĩa là rất nhiều cái gì đó.", targetPara: "ex16-p2-s2" },
+                    { id: "16-7", type: "mcq", text: "❷ Question 3 (Get More Energy)", options: ["importances", "importantly", "important", "importance"], correct: "important", explanation: "ĐÁP ÁN: C. important<br>ĐOẠN CHỨA ĐÁP ÁN: A healthy diet is really (3)______.<br>DỊCH NGHĨA: Một chế độ ăn uống lành mạnh thực sự rất quan trọng.<br>CỤM TỪ ĐỒNG NGHĨA/CẤU TRÚC: Sau trạng từ tăng cường 'really' và động từ tobe 'is', ta bắt buộc phải sử dụng một tính từ (adjective) đóng vai trò bổ ngữ: 'important'.", targetPara: "ex16-p2-s3" },
+                    { id: "16-8", type: "mcq", text: "❷ Question 4 (Get More Energy)", options: ["the", "an", "no article", "a"], correct: "a", explanation: "ĐÁP ÁN: D. a<br>ĐOẠN CHỨA ĐÁP ÁN: Sign up now and discover (4)_______ happier, healthier you!<br>DỊCH NGHĨA: Hãy đăng ký ngay bây giờ và khám phá một phiên bản chính bạn hạnh phúc hơn, khỏe mạnh hơn!<br>CỤM TỪ ĐỒNG NGHĨA/CẤU TRÚC: Cụm từ tu từ đặc biệt: 'a + [tính từ] + you' dùng để nói về một phiên bản mới, một trạng thái mới của một con người cụ thể.", targetPara: "ex16-p2-s3" }
+                ]
+            },
+            2: {
+                title: "Exercise 17: School and Life Management Cloze Texts",
+                subtitle: "Bài tập Tiếng Anh 9 (Global Success) - Trang 13-14",
+                passages: [
+                    {
+                        id: "ex17-p1",
+                        heading: "❶ Study-life Balance Tips 📅",
+                        paragraphs: [
+                            {
+                                id: "ex17-p1-s1",
+                                text: "It's not easy to manage school and life, but with some good time (1)_______ techniques, it's possible to achieve a study-life balance. Here are some tips for secondary-school students. Firstly, (2)_____ a schedule. Plan your week in advance, allocating specific times for studying, attending classes, and doing homework. You (3)_____ also include breaks and time for relaxation or hobbies.",
+                                translation: "Không dễ để vừa quản lý việc học vừa quản lý cuộc sống, nhưng với một số kỹ thuật quản lý thời gian tốt, bạn hoàn toàn có thể đạt được sự cân bằng giữa học tập và cuộc sống. Dưới đây là một số lời khuyên dành cho học sinh trung học. Thứ nhất, hãy lên lịch trình. Lập kế hoạch trước cho tuần của bạn, phân bổ thời gian cụ thể cho việc học, lên lớp và làm bài tập về nhà. Bạn cũng nên dành thời gian nghỉ ngơi và thời gian cho việc thư giãn hoặc sở thích cá nhân."
+                            },
+                            {
+                                id: "ex17-p1-s2",
+                                text: "Secondly, learn to prioritise. You should identify the most important tasks and focus (4)_____ those first. If necessary, you can delay less urgent activities until you've finished your important tasks. Remember that it's okay to say no sometimes if you feel overwhelmed. Thirdly, take (5)_____ of any free time during the day. For example, you can use long bus journeys to read or review notes. It is also advisable to get small tasks done during short breaks between classes. Finally, don't be too hard on yourself if you can't do everything perfectly. It's normal to occasionally feel stressed out. In these situations, you can consider (6)_____ to a teacher or school counsellor for support.",
+                                translation: "Thứ hai, học cách sắp xếp thứ tự ưu tiên. Bạn nên xác định các nhiệm vụ quan trọng nhất và tập trung vào những việc đó trước tiên. Nếu cần thiết, bạn có thể trì hoãn các hoạt động ít khẩn cấp hơn cho đến khi hoàn thành xong các công việc quan trọng. Hãy nhớ rằng đôi khi nói 'không' cũng không sao nếu bạn cảm thấy quá tải. Thứ ba, hãy tận dụng bất kỳ thời gian rảnh nào trong ngày. Ví dụ, bạn có thể tận dụng những chuyến đi xe buýt dài để đọc hoặc ôn lại bài ghi chép. Việc hoàn thành các bài tập nhỏ trong các giờ nghỉ giải lao ngắn giữa các tiết học cũng là một điều nên làm. Cuối cùng, đừng quá khắt khe với bản thân nếu không thể làm tốt mọi thứ một cách hoàn hảo. Cảm thấy căng thẳng đôi khi là chuyện bình thường. Trong những tình huống này, bạn có thể cân nhắc việc trò chuyện với giáo viên hoặc cố vấn tâm lý học đường để được hỗ trợ."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Technique", pos: "n", meaning: "Kỹ thuật, phương pháp", synonym: "Method / Strategy" },
+                            { word: "Allocate", pos: "v", meaning: "Phân bổ, chỉ định", synonym: "Assign / Distribute" },
+                            { word: "Prioritise", pos: "v", meaning: "Ưu tiên việc quan trọng", synonym: "Put primary focus on" },
+                            { word: "Overwhelmed", pos: "adj", meaning: "Bị quá tải, ngợp", synonym: "Stressed / Overburdened" },
+                            { word: "Counsellor", pos: "n", meaning: "Cố vấn, người cho lời khuyên", synonym: "Advisor / Therapist" },
+                            { word: "Advisable", pos: "adj", meaning: "Nên làm, khôn ngoan", synonym: "Recommended / Wise" }
+                        ]
+                    },
+                    {
+                        id: "ex17-p2",
+                        heading: "❷ Teenagers in a Competitive World 🌎",
+                        paragraphs: [
+                            {
+                                id: "ex17-p2-s1",
+                                text: "Teenagers today live in a very competitive world. It is more important than ever to succeed at school if you hope to (1)______ a chance in the job market afterwards. It’s no wonder that many young people worry (2)_______ letting down their parents, their peers and themselves. To try to please everyone, they take on too many tasks until it becomes harder and harder to balance homework assignments, parties, sports activities and friends. The result is that young people (3)_______ from stress.",
+                                translation: "Thanh thiếu niên ngày nay sống trong một thế giới cạnh tranh rất gay gắt. Việc thành công ở trường học trở nên quan trọng hơn bao giờ hết nếu bạn hy vọng có một cơ hội trên thị trường việc làm sau này. Không có gì ngạc nhiên khi nhiều người trẻ lo lắng về việc làm cha mẹ, bạn bè và chính bản thân họ thất vọng. Để cố gắng làm hài lòng tất cả mọi người, họ đảm nhận quá nhiều nhiệm vụ cho đến khi việc cân bằng giữa bài tập về nhà, tiệc tùng, hoạt động thể thao và bạn bè ngày càng trở nên khó khăn hơn. Kết quả là những người trẻ tuổi phải chịu đựng sự căng thẳng."
+                            },
+                            {
+                                id: "ex17-p2-s2",
+                                text: "There are different ways of dealing with stress. Everyone knows that caffeine, in the form of coffee or soft drinks, keeps you awake and alert. But caffeine is a drug which (4)______ become addictive. In the end, like other drugs, caffeine only leads to more stress. There are better ways to deal with stress: physical exercise is a good release for stress, (5)_____ it increases certain chemicals in the brain which calm you down. You have to get enough sleep to avoid stress and to stay healthy and full of (6)______.",
+                                translation: "Có những cách khác nhau để đối phó với căng thẳng. Mọi người đều biết rằng caffeine, dưới dạng cà phê hoặc nước ngọt, giúp bạn tỉnh táo và nhạy bén. Nhưng caffeine là một loại chất kích thích có thể gây nghiện. Cuối cùng, giống như các loại chất gây nghiện khác, caffeine chỉ dẫn đến căng thẳng nhiều hơn. Có những cách tốt hơn để giải tỏa căng thẳng: tập thể dục thể thao là một phương pháp giải tỏa căng thẳng tốt, bởi vì nó làm tăng một số chất hóa học trong não giúp bạn bình tĩnh lại. Bạn phải ngủ đủ giấc để tránh căng thẳng, giữ gìn sức khỏe và tràn đầy năng lượng."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Competitive", pos: "adj", meaning: "Cạnh tranh gay gắt", synonym: "Aggressive / Rivaling" },
+                            { word: "Peer", pos: "n", meaning: "Bạn bè đồng trang lứa", synonym: "Equal / Friend" },
+                            { word: "Suffer", pos: "v", meaning: "Chịu đựng (nỗi đau, stress)", synonym: "Endure / Go through" },
+                            { word: "Addictive", pos: "adj", meaning: "Có tính gây nghiện", synonym: "Habit-forming" },
+                            { word: "Release", pos: "n/v", meaning: "Sự giải tỏa, phóng thích", synonym: "Vent / Discharge" },
+                            { word: "Alert", pos: "adj", meaning: "Tỉnh táo, cảnh giác", synonym: "Awake / Watchful" }
+                        ]
+                    },
+                    {
+                        id: "ex17-p3",
+                        heading: "❸ Coping Mechanisms for Stress 🧘",
+                        paragraphs: [
+                            {
+                                id: "ex17-p3-s1",
+                                text: "It’s important to acknowledge that stress is a normal part of life, (1)_______ it’s vital to learn healthy ways to manage it. Talking to trusted (2)_______, like a parent, teacher, or counselor, can be a great way to receive support and guidance.",
+                                translation: "Điều quan trọng là phải thừa nhận rằng căng thẳng là một phần bình thường của cuộc sống, vì vậy điều sống còn là phải học những cách lành mạnh để quản lý nó. Trò chuyện với những người trưởng thành đáng tin cậy, như cha mẹ, thầy cô hoặc người cố vấn, có thể là một cách tuyệt vời để nhận được sự hỗ trợ và hướng dẫn."
+                            },
+                            {
+                                id: "ex17-p3-s2",
+                                text: "Finding healthy outlets for stress is (3)_______. Regular exercise, spending time in nature, listening to calming music, or pursuing creative hobbies can all be (4)________ coping mechanisms.",
+                                translation: "Tìm kiếm các phương thức giải tỏa lành mạnh cho sự căng thẳng là điều vô cùng quan trọng. Tập thể dục thường xuyên, dành thời gian hòa mình vào thiên nhiên, nghe nhạc êm dịu hoặc theo đuổi các sở thích sáng tạo đều có thể là những cơ chế đối phó hữu ích."
+                            },
+                            {
+                                id: "ex17-p3-s3",
+                                text: "Learning healthy sleep hygiene and maintaining a (5)________ diet can also significantly impact stress levels. Finally, remember to be kind to yourself. Don’t be afraid to ask (6)_______ help and prioritize your well-being.",
+                                translation: "Học cách vệ sinh giấc ngủ lành mạnh và duy trì một chế độ ăn uống cân bằng cũng có thể tác động đáng kể đến mức độ căng thẳng. Cuối cùng, hãy nhớ tử tế với chính mình. Đừng ngần ngại tìm kiếm sự trợ giúp và ưu tiên sức khỏe hạnh phúc của bạn."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Acknowledge", pos: "v", meaning: "Thừa nhận, công nhận", synonym: "Accept / Admit" },
+                            { word: "Vital", pos: "adj", meaning: "Sống còn, cực kỳ quan trọng", synonym: "Crucial / Essential" },
+                            { word: "Outlet", pos: "n", meaning: "Lối thoát, phương thức giải tỏa", synonym: "Means of expression" },
+                            { word: "Mechanism", pos: "n", meaning: "Cơ chế, phương thức hoạt động", synonym: "System / Tool" },
+                            { word: "Hygiene", pos: "n", meaning: "Hoạt động vệ sinh, giữ sạch", synonym: "Cleanliness / Habits" },
+                            { word: "Significant", pos: "adj", meaning: "Đáng kể, to lớn", synonym: "Noticeable / Major" }
+                        ]
+                    }
+                ],
+                questions: [
+                    { id: "17-1", type: "mcq", text: "❶ Question 1 (Time Management)", options: ["limitation", "period", "management", "awareness"], correct: "management", explanation: "ĐÁP ÁN: C. management<br>ĐOẠN CHỨA ĐÁP ÁN: with some good time (1)_______ techniques, it's possible to achieve a study-life balance.<br>DỊCH NGHĨA: với một số kỹ thuật quản lý thời gian tốt, bạn hoàn toàn có thể đạt được sự cân bằng giữa học tập và cuộc sống.<br>CỤM TỪ ĐỒNG NGHĨA: Cụm danh từ ghép phổ biến: 'time management' (quản lý thời gian).", targetPara: "ex17-p1-s1" },
+                    { id: "17-2", type: "mcq", text: "❶ Question 2 (Schedule Creation)", options: ["give", "hold", "work", "make"], correct: "make", explanation: "ĐÁP ÁN: D. make<br>ĐOẠN CHỨA ĐÁP ÁN: Firstly, (2)_____ a schedule.<br>DỊCH NGHĨA: Thứ nhất, hãy lên lịch trình.<br>CỤM TỪ ĐỒNG NGHĨA: Cấu trúc Collocation: 'make a schedule' mang nghĩa là lập ra một thời khóa biểu hoặc lịch trình công việc cụ thể.", targetPara: "ex17-p1-s1" },
+                    { id: "17-3", type: "mcq", text: "❶ Question 3 (Advice Modals)", options: ["should", "mustn’t", "ought not to", "may"], correct: "should", explanation: "ĐÁP ÁN: A. should<br>ĐOẠN CHỨA ĐÁP ÁN: You (3)_____ also include breaks and time for relaxation or hobbies.<br>DỊCH NGHĨA: Bạn cũng nên dành thời gian nghỉ ngơi và thời gian cho việc thư giãn hoặc sở thích cá nhân.<br>CỤM TỪ ĐỒNG NGHĨA: 'should' dùng để đưa ra lời khuyên hữu ích cho học sinh, mang tính xây dựng cao.", targetPara: "ex17-p1-s1" },
+                    { id: "17-4", type: "mcq", text: "❶ Question 4 (Preposition Focus)", options: ["to", "on", "with", "of"], correct: "on", explanation: "ĐÁP ÁN: B. on<br>ĐOẠN CHỨA ĐÁP ÁN: identify the most important tasks and focus (4)_____ those first.<br>DỊCH NGHĨA: xác định các nhiệm vụ quan trọng nhất và tập trung vào những việc đó trước tiên.<br>CỤM TỪ ĐỒNG NGHĨA: Cấu trúc động từ đi kèm giới từ bắt buộc: 'focus on' = tập trung vào cái gì.", targetPara: "ex17-p1-s2" },
+                    { id: "17-5", type: "mcq", text: "❶ Question 5 (Take advantage)", options: ["responsibility", "action", "advantage", "moment"], correct: "advantage", explanation: "ĐÁP ÁN: C. advantage<br>ĐOẠN CHỨA ĐÁP ÁN: Thirdly, take (5)_____ of any free time during the day.<br>DỊCH NGHĨA: Thứ ba, hãy tận dụng bất kỳ thời gian rảnh nào trong ngày.<br>CỤM TỪ ĐỒNG NGHĨA: Thành ngữ cố định: 'take advantage of' = tận dụng tối đa lợi ích từ cái gì.", targetPara: "ex17-p1-s2" },
+                    { id: "17-6", type: "mcq", text: "❶ Question 6 (Gerund / Verb Patterns)", options: ["talking", "to talking", "talked", "to be talked"], correct: "talking", explanation: "ĐÁP ÁN: A. talking<br>ĐOẠN CHỨA ĐÁP ÁN: In these situations, you can consider (6)_____ to a teacher...<br>DỊCH NGHĨA: Trong những tình huống này, bạn có thể cân nhắc việc trò chuyện với giáo viên...<br>CỤM TỪ ĐỒNG NGHĨA: Quy tắc động từ: Động từ 'consider' luôn đi kèm với một danh động từ dạng V-ing đứng sau ('consider + V-ing').", targetPara: "ex17-p1-s2" },
+                    { id: "17-7", type: "mcq", text: "❷ Question 1 (Job Market Chance)", options: ["wonder", "have", "doing", "take on"], correct: "have", explanation: "ĐÁP ÁN: B. have<br>ĐOẠN CHỨA ĐÁP ÁN: if you hope to (1)______ a chance in the job market afterwards.<br>DỊCH NGHĨA: nếu bạn hy vọng có một cơ hội trên thị trường việc làm sau này.<br>CỤM TỪ ĐỒNG NGHĨA: Cụm từ: 'have a chance' = có một cơ hội để thể hiện hoặc đạt được mục tiêu.", targetPara: "ex17-p2-s1" },
+                    { id: "17-8", type: "mcq", text: "❷ Question 2 (Worry Preposition)", options: ["of", "at", "about", "with"], correct: "about", explanation: "ĐÁP ÁN: C. about<br>ĐOẠN CHỨA ĐÁP ÁN: young people worry (2)_______ letting down their parents...<br>DỊCH NGHĨA: người trẻ lo lắng về việc làm cha mẹ thất vọng...<br>CỤM TỪ ĐỒNG NGHĨA: Cấu trúc tính từ/động từ cố định: 'worry about N/V-ing' = lo lắng, bất an về điều gì.", targetPara: "ex17-p2-s1" },
+                    { id: "17-9", type: "mcq", text: "❷ Question 3 (Suffer prepositional verb)", options: ["suffer", "please", "balance", "cope with"], correct: "suffer", explanation: "ĐÁP ÁN: A. suffer<br>ĐOẠN CHỨA ĐÁP ÁN: The result is that young people (3)_______ from stress.<br>DỊCH NGHĨA: Kết quả là những người trẻ tuổi phải chịu đựng sự căng thẳng.<br>CỤM TỪ ĐỒNG NGHĨA: Động từ đi kèm giới từ: 'suffer from' = hứng chịu, gánh chịu tác hại tiêu cực từ một căn bệnh hoặc trạng thái tâm lý.", targetPara: "ex17-p2-s1" },
+                    { id: "17-10", type: "mcq", text: "❷ Question 4 (Modal Ability)", options: ["can’t", "mustn’t", "have to", "can"], correct: "can", explanation: "ĐÁP ÁN: D. can<br>ĐOẠN CHỨA ĐÁP ÁN: But caffeine is a drug which (4)______ become addictive.<br>DỊCH NGHĨA: Nhưng caffeine là một loại chất kích thích có thể gây nghiện.<br>CỤM TỪ ĐỒNG NGHĨA: Động từ khuyết thiếu 'can' dùng để diễn tả một khả năng, một hệ quả có thể xảy ra trong thực tế khách quan.", targetPara: "ex17-p2-s2" },
+                    { id: "17-11", type: "mcq", text: "❷ Question 5 (Conjunction Logic)", options: ["although", "unless", "because", "because of"], correct: "because", explanation: "ĐÁP ÁN: C. because<br>ĐOẠN CHỨA ĐÁP ÁN: physical exercise is a good release for stress, (5)_____ it increases certain chemicals...<br>DỊCH NGHĨA: tập thể dục thể thao là một phương pháp giải tỏa căng thẳng tốt, bởi vì nó làm tăng một số chất hóa học...<br>CỤM TỪ ĐỒNG NGHĨA: Liên từ chỉ nguyên nhân: Sau chỗ trống là một mệnh đề (S + V), nên ta chọn 'because' thay vì chọn cụm giới từ 'because of'.", targetPara: "ex17-p2-s2" },
+                    { id: "17-12", type: "mcq", text: "❷ Question 6 (Full of Energy)", options: ["obstacle", "effort", "assignment", "energy"], correct: "energy", explanation: "ĐÁP ÁN: D. energy<br>ĐOẠN CHỨA ĐÁP ÁN: stay healthy and full of (6)______.<br>DỊCH NGHĨA: giữ gìn sức khỏe và tràn đầy năng lượng.<br>CỤM TỪ ĐỒNG NGHĨA: Cụm thành ngữ: 'full of energy' = tràn trề sinh lực, dồi dào sức sống.", targetPara: "ex17-p2-s2" },
+                    { id: "17-13", type: "mcq", text: "❸ Question 1 (Conjunction Choice)", options: ["so", "but", "therefore", "however"], correct: "so", explanation: "ĐÁP ÁN: A. so<br>ĐOẠN CHỨA ĐÁP ÁN: stress is a normal part of life, (1)_______ it’s vital to learn healthy ways...<br>DỊCH NGHĨA: căng thẳng là một phần bình thường của cuộc sống, vì vậy điều sống còn là phải học những cách lành mạnh...<br>CỤM TỪ ĐỒNG NGHĨA: Liên từ kết hợp 'so' đứng sau dấu phẩy để nối hai mệnh đề độc lập tạo quan hệ nguyên nhân - kết quả.", targetPara: "ex17-p3-s1" },
+                    { id: "17-14", type: "mcq", text: "❸ Question 2 (Trusted Adult)", options: ["adult", "men", "infant", "adolescent"], correct: "adult", explanation: "ĐÁP ÁN: A. adult<br>ĐOẠN CHỨA ĐÁP ÁN: Talking to trusted (2)_______, like a parent, teacher, or counselor...<br>DỊCH NGHĨA: Trò chuyện với những người trưởng thành đáng tin cậy, như cha mẹ, thầy cô hoặc người cố vấn...<br>CỤM TỪ ĐỒNG NGHĨA: Danh từ khái quát 'adult' (người trưởng thành) bao hàm cả cha mẹ, thầy cô giáo.", targetPara: "ex17-p3-s1" },
+                    { id: "17-15", type: "mcq", text: "❸ Question 3 (Adjective Crucial)", options: ["low", "dependent", "light", "crucial"], correct: "crucial", explanation: "ĐÁP ÁN: D. crucial<br>ĐOẠN CHỨA ĐÁP ÁN: Finding healthy outlets for stress is (3)_______.<br>DỊCH NGHĨA: Tìm kiếm các phương thức giải tỏa lành mạnh cho sự căng thẳng là điều vô cùng quan trọng.<br>CỤM TỪ ĐỒNG NGHĨA: Crucial = Vital = Essential (Cực kỳ quan trọng, thiết yếu).", targetPara: "ex17-p3-s2" },
+                    { id: "17-16", type: "mcq", text: "❸ Question 4 (Coping Mechanisms)", options: ["helpful", "helpless", "hopeful", "hopeless"], correct: "helpful", explanation: "ĐÁP ÁN: A. helpful<br>ĐOẠN CHỨA ĐÁP ÁN: can all be (4)________ coping mechanisms.<br>DỊCH NGHĨA: đều có thể là những cơ chế đối phó hữu ích.<br>CỤM TỪ ĐỒNG NGHĨA: Helpful = Useful = Beneficial (Có ích, giúp ích nhiều cho quá trình giải tỏa tâm lý).", targetPara: "ex17-p3-s2" },
+                    { id: "17-17", type: "mcq", text: "❸ Question 5 (Balanced Diet)", options: ["fair", "balanced", "equalized", "delicious"], correct: "balanced", explanation: "ĐÁP ÁN: B. balanced<br>ĐOẠN CHỨA ĐÁP ÁN: maintaining a (5)________ diet can also significantly impact...<br>DỊCH NGHĨA: duy trì một chế độ ăn uống cân bằng cũng có thể tác động đáng kể...<br>CỤM TỪ ĐỒNG NGHĨA: Cụm từ thông dụng: 'a balanced diet' nghĩa là một chế độ ăn uống đầy đủ, cân đối các nhóm chất dinh dưỡng.", targetPara: "ex17-p3-s3" },
+                    { id: "17-18", type: "mcq", text: "❸ Question 6 (Ask for help)", options: ["about", "to", "for", "with"], correct: "for", explanation: "ĐÁP ÁN: C. for<br>ĐOẠN CHỨA ĐÁP ÁN: Don’t be afraid to ask (6)_______ help...<br>DỊCH NGHĨA: Đừng ngần ngại tìm kiếm sự trợ giúp...<br>CỤM TỪ ĐỒNG NGHĨA: Cấu trúc động từ đi kèm giới từ: 'ask for something' = yêu cầu, xin hoặc tìm kiếm sự giúp đỡ từ ai.", targetPara: "ex17-p3-s3" }
+                ]
+            },
+            3: {
+                title: "Exercises 18-20: Advanced Reading Comprehension Tasks",
+                subtitle: "Bài tập Tiếng Anh 9 (Global Success) - Trang 14-18",
+                passages: [
+                    {
+                        id: "ex18-p1",
+                        heading: "❶ Robert's City Neighbourhood 🏙️",
+                        paragraphs: [
+                            {
+                                id: "ex18-p1-s1",
+                                text: "My name is Robert. I live in an apartment. My apartment is on the twelfth floor. There is a supermarket on the first floor in our building. My mother and I often buy food, drinks and household items in the supermarket because of its convenience. Sometimes, I buy some bread and milk for breakfast when I go to school.",
+                                translation: "Tên tôi là Robert. Tôi sống trong một căn hộ chung cư. Căn hộ của tôi nằm ở tầng mười hai. Có một siêu thị ở ngay tầng một trong tòa nhà của chúng tôi. Mẹ tôi và tôi thường xuyên mua đồ ăn, thức uống và các vật dụng gia đình ở siêu thị này vì sự tiện lợi của nó. Đôi khi, tôi mua một ít bánh mì và sữa cho bữa sáng khi chuẩn bị đến trường."
+                            },
+                            {
+                                id: "ex18-p1-s2",
+                                text: "There is a park near my building. In the afternoons, I often play soccer with my friends in the park to improve our health. There is also a big restaurant with plenty of delicious dishes in my neighbourhood and my family usually has dinner at the restaurant on Saturday evenings. After dinner, if I want to see a film, I can go to the cinema which is not far from my building. It is interesting to live in a city like our city.",
+                                translation: "Có một công viên ở gần tòa nhà tôi ở. Vào các buổi chiều, tôi thường chơi đá bóng với bạn bè trong công viên để nâng cao sức khỏe. Ngoài ra còn có một nhà hàng lớn với rất nhiều món ăn ngon ở khu phố tôi sống và gia đình tôi thường ăn tối tại nhà hàng vào các tối thứ Bảy. Sau bữa tối, nếu muốn xem phim, tôi có thể đến rạp chiếu phim nằm không xa tòa nhà. Thật là thú vị khi được sống trong một thành phố giống như thành phố của chúng tôi."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Apartment", pos: "n", meaning: "Căn hộ chung cư", synonym: "Flat" },
+                            { word: "Convenience", pos: "n", meaning: "Sự tiện lợi, thuận tiện", synonym: "Handiness / Usefulness" },
+                            { word: "Neighbourhood", pos: "n", meaning: "Khu vực lân cận, khu phố", synonym: "Vicinity / Local area" },
+                            { word: "Delicious", pos: "adj", meaning: "Ngon miệng, thơm ngon", synonym: "Tasty / Scrumptious" }
+                        ]
+                    },
+                    {
+                        id: "ex18-p2",
+                        heading: "❷ What Is It Like Being A Teenager In Britain? 🇬🇧",
+                        paragraphs: [
+                            {
+                                id: "ex18-p2-s1",
+                                text: "<b>School:</b> British teenagers spend most of their time at school. Students in Britain can leave school at sixteen (grade 11). This is also the age when most students take their first important exams, the GCSE (General Certificate of Secondary Education). Most teens take between 5-10 subjects, which means a lot of studying. They are spending more time on homework than teenagers ever before. Forget watching TV, teenagers in Britain now spend 2-3 hours on homework after school.",
+                                translation: "<b>Trường học:</b> Thanh thiếu niên Anh dành phần lớn thời gian ở trường. Học sinh ở Anh có thể nghỉ học ở tuổi mười sáu (lớp 11). Đây cũng là độ tuổi mà hầu hết học sinh tham gia kỳ thi quan trọng đầu tiên của mình, kỳ thi tốt nghiệp trung học phổ thông GCSE. Hầu hết các thanh thiếu niên học từ 5 đến 10 môn học, điều đó đồng nghĩa với việc phải học rất nhiều. Họ đang dành nhiều thời gian cho bài tập về nhà hơn các thế hệ thanh thiếu niên trước đây. Hãy quên việc xem tivi đi, thanh thiếu niên ở Anh hiện nay dành từ 2 đến 3 tiếng để làm bài tập về nhà sau giờ học."
+                            },
+                            {
+                                id: "ex18-p2-s2",
+                                text: "<b>School uniform:</b> Visit almost any school in Britain and the first thing you’ll notice is the school uniform. Although school uniform has its advantages, when they are 15 or 16 most teenagers are tired of wearing it. When there is more than one school in a town, school uniforms can highlight differences between schools. In London there are many cases of bullying and fighting between pupils from different schools.",
+                                translation: "<b>Đồng phục học sinh:</b> Ghé thăm hầu như bất kỳ ngôi trường nào ở Anh và điều đầu tiên bạn nhận thấy chính là bộ đồng phục học sinh. Mặc dù đồng phục học sinh có những lợi thế riêng, nhưng khi bước sang tuổi 15 hoặc 16, hầu hết thanh thiếu niên đều cảm thấy mệt mỏi chán ngán với việc mặc nó. Khi có nhiều hơn một trường học trong một thị trấn, đồng phục học sinh có thể làm nổi bật sự khác biệt giữa các trường. Ở Luân Đôn, đã có nhiều trường hợp bắt nạt và đánh nhau giữa các học sinh từ các trường khác nhau."
+                            },
+                            {
+                                id: "ex18-p2-s3",
+                                text: "<b>Clothes and looks:</b> In Britain, some teens judge you by the shirt or trainers you are wearing, as 40% of British teenagers believe it's important to wear designer labels. If you want to follow the crowd, you need to wear trendy labels. Teenagers in Britain wear fashionable trainers and the more expensive, the better.",
+                                translation: "<b>Quần áo và diện mạo:</b> Ở Anh, một số thanh thiếu niên đánh giá bạn qua chiếc áo sơ mi hoặc đôi giày thể thao bạn đang đi, vì có tới 40% thanh thiếu niên Anh tin rằng việc mặc quần áo hàng hiệu từ các nhà thiết kế tên tuổi là rất quan trọng. Nếu bạn muốn theo kịp xu hướng đám đông, bạn cần phải mặc những thương hiệu thời thượng. Thanh thiếu niên ở Anh đi những đôi giày thể thao thời trang và giày càng đắt tiền thì càng tốt."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Uniform", pos: "n", meaning: "Đồng phục học sinh", synonym: "Standardized dress code" },
+                            { word: "Highlight", pos: "v", meaning: "Làm nổi bật, nhấn mạnh", synonym: "Emphasize / Accentuate" },
+                            { word: "Bullying", pos: "n", meaning: "Hành vi bắt nạt, chèn ép", synonym: "Intimidation" },
+                            { word: "Trendy", pos: "adj", meaning: "Thời thượng, chạy theo mốt", synonym: "Fashionable / In vogue" }
+                        ]
+                    },
+                    {
+                        id: "ex18-p3",
+                        heading: "❸ Discovering and Following Your Passions ❤️",
+                        paragraphs: [
+                            {
+                                id: "ex18-p3-s1",
+                                text: "Have you ever felt so passionate about something that you couldn’t stop thinking about it? That overwhelming feeling of excitement and dedication is what makes following your passions so rewarding. For teenagers, discovering their passions can be a significant step towards a fulfilling future.",
+                                translation: "Bạn đã bao giờ cảm thấy đam mê một điều gì đó đến mức không thể ngừng nghĩ về nó chưa? Cảm giác phấn khích và cống hiến tràn ngập đó là điều khiến việc theo đuổi đam mê của bạn trở nên vô cùng xứng đáng. Đối với thanh thiếu niên, việc khám phá ra đam mê của bản thân có thể là một bước tiến quan trọng hướng tới một tương lai trọn vẹn đầy hứa hẹn."
+                            },
+                            {
+                                id: "ex18-p3-s2",
+                                text: "Passions can take many forms. It could be a love for music and playing an instrument, a fascination with science and conducting experiments, or a talent for writing and expressing oneself creatively. When teenagers pursue their passions, they often experience a sense of purpose and motivation. They become eager to learn, develop new skills, and overcome challenges.",
+                                translation: "Đam mê có thể biểu hiện dưới nhiều hình thức khác nhau. Đó có thể là niềm yêu thích âm nhạc và chơi một nhạc cụ, sự say mê khoa học và thực hiện các thí nghiệm, hoặc tài năng viết lách và thể hiện bản thân một cách sáng tạo. Khi thanh thiếu niên theo đuổi đam mê, họ thường cảm nhận được ý nghĩa cuộc sống và động lực mạnh mẽ. Họ trở nên khao khát học hỏi, phát triển các kỹ năng mới và vượt qua các thử thách khó khăn."
+                            },
+                            {
+                                id: "ex18-p3-s3",
+                                text: "However, focusing on a passion isn’t always easy. There may be times when friends seem more interested in different things, or family expectations can seem at odds with personal aspirations. It’s important to remember that pursuing a passion requires commitment and perseverance. There will be setbacks and moments of doubt, but the feeling of accomplishment and satisfaction from pursuing something you truly love is worth the effort.",
+                                translation: "Tuy nhiên, tập trung vào đam mê không phải lúc nào cũng dễ dàng. Có thể có những lúc bạn bè có vẻ quan tâm đến những điều khác biệt, hoặc kỳ vọng của gia đình có vẻ mâu thuẫn với nguyện vọng cá nhân của bạn. Điều quan trọng cần nhớ là việc theo đuổi đam mê đòi hỏi sự cam kết bền bỉ và lòng kiên trì. Sẽ có những bước lùi và những khoảnh khắc nghi ngờ bản thân, nhưng cảm giác thành tựu và sự hài lòng từ việc theo đuổi điều bạn thực sự yêu thích hoàn toàn xứng đáng với nỗ lực bỏ ra."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Passionate", pos: "adj", meaning: "Đam mê, nồng nhiệt", synonym: "Enthusiastic / Ardent" },
+                            { word: "Overwhelming", pos: "adj", meaning: "Tràn ngập, quá mạnh mẽ", synonym: "Irresistible / Intense" },
+                            { word: "Perseverance", pos: "n", meaning: "Sự kiên trì, bền bỉ", synonym: "Determination / Grit" },
+                            { word: "Setback", pos: "n", meaning: "Trở ngại, sự lùi bước", synonym: "Obstacle / Difficulty" }
+                        ]
+                    },
+                    {
+                        id: "ex18-p4",
+                        heading: "❹ Teen Life as a Three-ring Circus 🎪",
+                        paragraphs: [
+                            {
+                                id: "ex18-p4-s1",
+                                text: "Being a teenager is like navigating a three-ring circus. On one hand, you’re juggling the demands of school, with exams, homework, and projects testing your academic skills. On the other hand, you’re likely involved in extracurricular activities, from sports and clubs to music lessons and volunteering. Add to that the ever-present desire for social interaction with friends and family, and it’s no wonder teenagers often feel stretched thin.",
+                                translation: "Làm một người trẻ tuổi giống như việc điều khiển một rạp xiếc ba vòng đầy náo loạn. Một mặt, bạn đang phải tung hứng tung hàng loạt yêu cầu của trường học, với các kỳ thi, bài tập về nhà và các dự án kiểm tra năng lực học tập của bạn. Mặt khác, bạn có thể tham gia vào các hoạt động ngoại khóa, từ thể thao, câu lạc bộ đến các bài học âm nhạc và công tác tình nguyện. Thêm vào đó là khao khát tương tác xã hội luôn hiện hữu với bạn bè và gia đình, chả trách thanh thiếu niên thường xuyên rơi vào trạng thái kiệt sức vì bị kéo căng sức lực."
+                            },
+                            {
+                                id: "ex18-p4-s2",
+                                text: "This constant balancing act can be challenging. Finding enough time to meet all your commitments can be a struggle, leading to feelings of stress and anxiety. Prioritizing tasks and creating a schedule can help, but unexpected events and changes in plans can throw everything out of whack.",
+                                translation: "Hành động cân bằng liên tục này có thể vô cùng thách thức. Tìm đủ thời gian để thực hiện tất cả các cam kết của bạn có thể là một cuộc chiến gian khổ, dẫn đến cảm giác căng thẳng và lo âu. Sắp xếp thứ tự ưu tiên cho các nhiệm vụ và lập thời biểu có thể giúp ích, nhưng các sự kiện bất ngờ và những thay đổi đột xuất trong kế hoạch có thể làm đảo lộn hoàn toàn mọi thứ."
+                            },
+                            {
+                                id: "ex18-p4-s3",
+                                text: "However, navigating this juggling act also offers valuable lessons. It teaches teenagers valuable skills like time management, organization, and prioritization. They learn to be responsible, handle pressure, and adapt to changing situations. Additionally, the diverse experiences gained through academics, activities, and social interactions contribute to personal development and self-discovery.",
+                                translation: "Tuy nhiên, việc chèo lái hành động tung hứng phức tạp này cũng mang lại nhiều bài học quý giá. Nó dạy cho thanh thiếu niên những kỹ năng đắt giá như quản lý thời gian, tổ chức và sắp xếp thứ tự ưu tiên. Họ học được cách chịu trách nhiệm, xử lý áp lực và thích ứng với các hoàn cảnh luôn thay đổi. Ngoài ra, những trải nghiệm phong phú gặt hái được thông qua học tập, các hoạt động và tương tác xã hội đóng góp lớn vào sự phát triển cá nhân và hành trình tự khám phá bản thân."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Juggling", pos: "v", meaning: "Tung hứng, cân bằng nhiều việc", synonym: "Balancing multiple tasks" },
+                            { word: "Extracurricular", pos: "adj", meaning: "Ngoại khóa", synonym: "Outside regular curriculum" },
+                            { word: "Out of whack", pos: "idiom", meaning: "Bị đảo lộn, hỏng hóc", synonym: "Disrupted / Out of order" },
+                            { word: "Self-discovery", pos: "n", meaning: "Sự tự khám phá bản thân", synonym: "Gaining self-knowledge" }
+                        ]
+                    },
+                    {
+                        id: "ex19-p1",
+                        heading: "❺ How To Manage Your Time (Mary & James) ⏰",
+                        paragraphs: [
+                            {
+                                id: "ex19-p1-s1",
+                                text: "<b>Mary's View:</b> Balance is key for Mary, a busy teenager. She uses an app to stay organized with her assignments and deadlines; the app helps her receive reminders to ensure she doesn’t forget anything. Mary also makes a daily to-do list to help her stay focused and motivated. She’s mindful of not spending too much time on online social media, limiting her usage to an hour each day to avoid wasting her time. On weekends, Mary enjoys relaxing and socializing with friends, going to the cinema, shopping, or just hanging out. She also does some volunteer work at a local charity, which provides valuable academic experience and looks great on her CV.",
+                                translation: "<b>Quan điểm của Mary:</b> Sự cân bằng là chìa khóa đối với Mary, một cô gái tuổi teen bận rộn. Cô sử dụng một ứng dụng để duy trì tính tổ chức cho các bài tập và hạn chót của mình; ứng dụng giúp cô nhận được các lời nhắc nhở để đảm bảo cô không bỏ quên bất cứ thứ gì. Mary cũng lập danh sách việc cần làm hàng ngày để giúp mình luôn tập trung và có động lực. Cô lưu ý không dành quá nhiều thời gian cho mạng xã hội trực tuyến, giới hạn thời gian sử dụng chỉ một tiếng mỗi ngày để tránh lãng phí thời gian. Vào cuối tuần, Mary thích thư giãn và giao lưu với bạn bè, đi xem phim, mua sắm hoặc chỉ đơn giản là đi chơi dạo phố. Cô cũng tham gia một số công việc tình nguyện tại một tổ chức từ thiện địa phương, hoạt động mang lại kinh nghiệm học tập quý giá và làm đẹp cho sơ yếu lý lịch (CV) của cô."
+                            },
+                            {
+                                id: "ex19-p1-s2",
+                                text: "<b>James's View:</b> James, an adult working a nine-to-five job, is also aware of the importance of time management. He starts his day by making a to-do list, prioritizing the most urgent or difficult tasks first when he has the most energy. To avoid distractions, James turns off email and social media notifications on his phone and closes his office door, allowing him to concentrate. On the day when he must work overtime, he quickly rearranges his tasks and makes sure everything gets completed on time. When at home, James spends his quality time with his family, playing games or going to the park with his two young children. James and his wife share the housework, taking turns cooking and cleaning, ensuring a great work-life balance. In his free time, James keeps fit by playing football with friends and going to the gym, which helps him relax and clear his mind.",
+                                translation: "<b>Quan điểm của James:</b> James, một người trưởng thành làm công việc hành chính từ 9 giờ sáng đến 5 giờ chiều, cũng nhận thức rất rõ tầm quan trọng của việc quản lý thời gian. Anh bắt đầu ngày mới bằng việc lập danh sách việc cần làm, ưu tiên những nhiệm vụ khẩn cấp hoặc khó khăn nhất trước tiên vào lúc anh có nhiều năng lượng nhất. Để tránh sự xao nhãng, James tắt thông báo email và mạng xã hội trên điện thoại, đồng thời đóng cửa văn phòng làm việc để tập trung cao độ. Vào ngày phải làm việc tăng ca, anh nhanh chóng sắp xếp lại các nhiệm vụ của mình và đảm bảo mọi thứ được hoàn thành đúng hạn. Khi ở nhà, James dành thời gian chất lượng cho gia đình, chơi trò chơi hoặc đi công viên với hai con nhỏ. James và vợ cùng chia sẻ việc nhà, thay phiên nhau nấu nướng và dọn dẹp, đảm bảo sự cân bằng tuyệt vời giữa công việc và cuộc sống. Trong thời gian rảnh rỗi, James giữ gìn vóc dáng bằng cách chơi đá bóng với bạn bè và đến phòng tập gym, điều này giúp anh thư giãn và thanh lọc tâm trí."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Mindful", pos: "adj", meaning: "Lưu tâm, chú ý", synonym: "Aware / Conscious" },
+                            { word: "Charity", pos: "n", meaning: "Tổ chức từ thiện", synonym: "Nonprofit organization" },
+                            { word: "Overtime", pos: "n/adv", meaning: "Giờ làm việc tăng ca", synonym: "Extra working hours" },
+                            { word: "Distraction", pos: "n", meaning: "Sự xao nhãng, mất tập trung", synonym: "Interruption / Disturbance" }
+                        ]
+                    },
+                    {
+                        id: "ex20-p1",
+                        heading: "❻ Healthy Eating Advice 🍏",
+                        paragraphs: [
+                            {
+                                id: "ex20-p1-s1",
+                                text: "Healthy eating is not about strict limitations, staying unrealistically thin, or depriving yourself of the foods you love. (1)_______, having more energy, and improving your health, and boosting your mood. Healthy eating doesn't have to be overly complicated. If you feel overwhelmed by all the conflicting nutrition and diet advice out there, you're not alone. It seems that for every expert who tells you a certain food is good for you, (2)_______. The truth is that while some specific foods or nutrients have been shown to have a beneficial effect on mood, it's your overall dietary pattern that is most important. (3)_______. This can make a huge difference in how you think, look, and feel. By using these simple tips, (4)_______, varied, and nutritious diet that is as good for your mind as it is for your body.",
+                                translation: "Ăn uống lành mạnh không phải là về những hạn chế nghiêm ngặt, giữ cho cơ thể gầy gò một cách phi thực tế, hay bỏ đói tước đoạt đi những món ăn bạn yêu thích. Thay vào đó, đó là về việc ăn những bữa ăn cân bằng dưỡng chất giúp bạn cảm thấy tuyệt vời, có nhiều năng lượng hơn, cải thiện sức khỏe và nâng cao tâm trạng. Ăn uống lành mạnh không cần phải quá phức tạp. Nếu bạn cảm thấy bị ngợp bởi tất cả những lời khuyên mâu thuẫn về dinh dưỡng và chế độ ăn kiêng ngoài kia, bạn không hề cô đơn. Dường như cứ có một chuyên gia bảo với bạn rằng một loại thực phẩm nào đó tốt cho bạn, thì bạn lại tìm thấy một người khác nói điều hoàn toàn ngược lại. Sự thật là mặc dù một số loại thực phẩm hoặc chất dinh dưỡng cụ thể đã được chứng minh là có tác động có lợi lên tâm trạng, nhưng chính mô hình ăn uống tổng thể mới là điều quan trọng nhất. Ăn uống khoa học bao gồm ăn nhiều thực phẩm gần gũi với cách mà tự nhiên tạo ra chúng hơn. Điều này có thể tạo ra sự khác biệt khổng lồ trong cách bạn suy nghĩ, diện mạo bên ngoài và cảm nhận. Bằng cách áp dụng những mẹo đơn giản này, bạn có thể vượt qua sự bối rối mông lung và học cách tạo ra - cũng như gắn bó lâu dài với - một chế độ ăn ngon miệng, đa dạng và bổ dưỡng, tốt cho tâm trí cũng như cơ thể của bạn."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Depriving", pos: "v", meaning: "Tước đoạt, bỏ đói", synonym: "Stripping / Denying" },
+                            { word: "Conflicting", pos: "adj", meaning: "Mâu thuẫn trái ngược nhau", synonym: "Contradictory / Clashing" },
+                            { word: "Nutritious", pos: "adj", meaning: "Bổ dưỡng, giàu dưỡng chất", synonym: "Wholesome / Healthy" },
+                            { word: "Beneficial", pos: "adj", meaning: "Có lợi, tốt cho", synonym: "Advantageous / Helpful" }
+                        ]
+                    },
+                    {
+                        id: "ex20-p2",
+                        heading: "❼ Time Management Strategies 📊",
+                        paragraphs: [
+                            {
+                                id: "ex20-p2-s1",
+                                text: "(1)_______. Firstly, it is important to set clear and realistic goals and prioritise tasks accordingly. This means that you must identify what is the most important and urgent and allocate time and resources accordingly. Next, creating a schedule or to-do list can be helpful in staying on track and ensuring that all tasks are completed within the time allotted. Thirdly, (2)_______ and time-wasting activities such as checking social media. Instead, you should focus on the task at hand and work efficiently to complete it. Additionally, taking regular breaks and scheduling time for self-care activities can help increase productivity and prevent burnout. Finally, (3)_______ that you are making progress towards your goals and accommodating yourself to any working conditions in your life. (4)_______, be more productive, and achieve success in all aspects of your life.",
+                                translation: "Chúng ta có thể quản lý thời gian của mình một cách hiệu quả bằng cách tuân theo một số chiến lược sau đây. Trước hết, điều quan trọng là phải thiết lập các mục tiêu rõ ràng, thực tế và sắp xếp thứ tự ưu tiên cho các nhiệm vụ một cách phù hợp. Điều này có nghĩa là bạn phải xác định điều gì là quan trọng và khẩn cấp nhất, từ đó phân bổ thời gian và nguồn lực hợp lý. Tiếp theo, tạo một lịch trình hoặc danh sách việc cần làm có thể giúp ích trong việc bám sát tiến độ và đảm bảo mọi nhiệm vụ được hoàn thành trong thời gian quy định. Thứ ba, điều quan trọng là phải học cách nói không với những điều gây xao nhãng và các hoạt động gây lãng phí thời gian như kiểm tra mạng xã hội. Thay vào đó, bạn nên tập trung vào nhiệm vụ hiện tại và làm việc hiệu quả để hoàn thành nó. Ngoài ra, việc nghỉ giải lao đều đặn và lên lịch thời gian cho các hoạt động chăm sóc bản thân có thể giúp tăng năng suất và ngăn ngừa sự kiệt sức. Cuối cùng, điều thiết yếu là phải thường xuyên rà soát và điều chỉnh lịch trình của bạn để đảm bảo rằng bạn đang tiến bộ hướng tới các mục tiêu và thích nghi tốt với bất kỳ điều kiện làm việc nào trong cuộc sống. Bằng cách làm theo các mẹo này, bạn có thể tận dụng tối đa thời gian của mình, làm việc hiệu quả hơn và đạt được thành công trong mọi khía cạnh của cuộc sống."
+                            }
+                        ],
+                        glossary: [
+                            { word: "Allotted", pos: "adj", meaning: "Được phân bổ, quy định sẵn", synonym: "Assigned / Allocated" },
+                            { word: "Efficiently", pos: "adv", meaning: "Một cách hiệu quả", synonym: "Productively" },
+                            { word: "Productivity", pos: "n", meaning: "Năng suất, hiệu suất làm việc", synonym: "Output capacity" },
+                            { word: "Burnout", pos: "n", meaning: "Sự kiệt sức, suy sụp", synonym: "Extreme exhaustion" }
+                        ]
+                    }
+                ],
+                questions: [
+                    { id: "18-1-1", type: "mcq", text: "❶ Q1: Robert lives in __________ on the twelfth floor in a building.", options: ["a house", "an apartment", "detached house", "stilt house"], correct: "an apartment", explanation: "ĐÁP ÁN: B. an apartment<br>DẪN CHỨNG: Ở đoạn 1 dòng 1: 'My name is Robert. I live in an apartment. My apartment is on the twelfth floor.'<br>DỊCH NGHĨA: Tôi sống trong một căn hộ chung cư nằm ở tầng mười hai.", targetPara: "ex18-p1-s1" },
+                    { id: "18-1-2", type: "mcq", text: "❶ Q2: The supermarket is on the __________ floor in the building.", options: ["first", "second", "third", "fourth"], correct: "first", explanation: "ĐÁP ÁN: A. first<br>DẪN CHỨNG: 'There is a supermarket on the first floor in our building.'<br>DỊCH NGHĨA: Có một siêu thị ở ngay tầng một trong tòa nhà của chúng tôi.", targetPara: "ex18-p1-s1" },
+                    { id: "18-1-3", type: "mcq", text: "❶ Q3: Robert sometimes buys some __________ for breakfast when he goes to school.", options: ["bread and orange juice", "banana and milk", "bread and eggs", "bread and milk"], correct: "bread and milk", explanation: "ĐÁP ÁN: D. bread and milk<br>DẪN CHỨNG: 'Sometimes, I buy some bread and milk for breakfast when I go to school.'<br>DỊCH NGHĨA: Đôi khi, tôi mua một ít bánh mì và sữa cho bữa sáng khi chuẩn bị đến trường.", targetPara: "ex18-p1-s1" },
+                    { id: "18-1-4", type: "mcq", text: "❶ Q4: He often plays soccer with __________ in the park near the building.", options: ["his brother", "his sister", "his friends", "his father"], correct: "his friends", explanation: "ĐÁP ÁN: C. his friends<br>DẪN CHỨNG: 'In the afternoons, I often play soccer with my friends in the park...'<br>DỊCH NGHĨA: Vào các buổi chiều, tôi thường chơi đá bóng với bạn bè trong công viên.", targetPara: "ex18-p1-s2" },
+                    { id: "18-1-5", type: "mcq", text: "❶ Q5: There is also a __________ and a cinema in his neighbourhood.", options: ["post office", "tower", "zoo", "restaurant"], correct: "restaurant", explanation: "ĐÁP ÁN: D. restaurant<br>DẪN CHỨNG: 'There is also a big restaurant with plenty of delicious dishes in my neighbourhood...'<br>DỊCH NGHĨA: Ngoài ra còn có một nhà hàng lớn với rất nhiều món ăn ngon ở khu phố tôi sống.", targetPara: "ex18-p1-s2" },
+                    
+                    { id: "18-2-1", type: "mcq", text: "❷ Q1: Most students in Britain take the GCSE when__________", options: ["they are 11 years old", "they are 16 years old", "they finish grade 10", "they begin grade 11"], correct: "they are 16 years old", explanation: "ĐÁP ÁN: B. they are 16 years old<br>DẪN CHỨNG: 'Students in Britain can leave school at sixteen (grade 11). This is also the age when most students take their first important exams, the GCSE...'<br>DỊCH NGHĨA: Học sinh ở Anh có thể nghỉ học ở tuổi mười sáu... Đây cũng là độ tuổi họ thi GCSE.", targetPara: "ex18-p2-s1" },
+                    { id: "18-2-2", type: "mcq", text: "❷ Q2: What is the first thing you’ll notice when you visit almost any school in Britain?", options: ["the school logo", "the school gate", "the school playground", "the school uniform"], correct: "the school uniform", explanation: "ĐÁP ÁN: D. the school uniform<br>DẪN CHỨNG: 'Visit almost any school in Britain and the first thing you’ll notice is the school uniform.'<br>DỊCH NGHĨA: Ghé thăm hầu như bất kỳ ngôi trường nào ở Anh và điều đầu tiên bạn nhận thấy chính là bộ đồng phục học sinh.", targetPara: "ex18-p2-s2" },
+                    { id: "18-2-3", text: "❷ Q3: What do most teenagers in Britain prefer to wear?", type: "mcq", options: ["trendy labels", "expensive uniforms", "fashionable hats", "economical trainers"], correct: "trendy labels", explanation: "ĐÁP ÁN: A. trendy labels<br>DẪN CHỨNG: 'If you want to follow the crowd, you need to wear trendy labels.'<br>DỊCH NGHĨA: Nếu bạn muốn theo kịp xu hướng đám đông, bạn cần phải mặc những thương hiệu thời thượng.", targetPara: "ex18-p2-s3" },
+                    { id: "18-2-4", text: "❷ Q4: The word ‘highlight’ in paragraph 2 is closest in meaning to__________", type: "mcq", options: ["confuse", "remark", "emphasize", "decrease"], correct: "emphasize", explanation: "ĐÁP ÁN: C. emphasize<br>DẪN CHỨNG: 'school uniforms can highlight differences between schools.'<br>DỊCH NGHĨA: đồng phục học sinh có thể làm nổi bật/nhấn mạnh sự khác biệt giữa các trường học.<br>TỪ ĐỒNG NGHĨA: highlight = emphasize (nhấn mạnh, làm nổi bật lên).", targetPara: "ex18-p2-s2" },
+                    { id: "18-2-5", text: "❷ Q5: According to the passage, which of the following statements is NOT true?", type: "mcq", options: ["Students in Britain can take 8 subjects at the GCSE.", "Most British teenagers spend 2-3 hours watching TV after school.", "Most 16-year-old students in Britain don’t like school uniforms.", "Many British teenagers judge their friends by their shirt or trainers."], correct: "Most British teenagers spend 2-3 hours watching TV after school.", explanation: "ĐÁP ÁN: B. Most British teenagers spend 2-3 hours watching TV after school.<br>DẪN CHỨNG: 'Forget watching TV, teenagers in Britain now spend 2-3 hours on homework after school.'<br>DỊCH NGHĨA: Hãy quên việc xem TV đi, họ dành 2-3 tiếng để làm BÀI TẬP VỀ NHÀ cơ chứ không phải xem phim.", targetPara: "ex18-p2-s1" },
+
+                    { id: "18-3-1", type: "mcq", text: "❸ Q1: What can be the best title for the passage?", options: ["\"Teenagers and Their Hobbies\"", "\"The Importance of Family Expectations\"", "\"Overcoming Challenges in Pursuing Passions\"", "\"Discovering and Following Your Passions\""], correct: "\"Discovering and Following Your Passions\"", explanation: "ĐÁP ÁN: D. Discovering and Following Your Passions<br>DẪN CHỨNG: Xuyên suốt cả 3 đoạn văn đều nói về ý nghĩa, phân loại và sự kiên trì cần thiết khi khám phá và đi theo đam mê của người trẻ ('discovering their passions can be a significant step...').", targetPara: "ex18-p3-s1" },
+                    { id: "18-3-2", type: "mcq", text: "❸ Q2: What is the main benefit of following one's passions, according to the passage?", options: ["Feeling overwhelmed", "Developing new skills", "Facing setbacks", "Meeting family expectations"], correct: "Developing new skills", explanation: "ĐÁP ÁN: B. Developing new skills<br>DẪN CHỨNG: Đoạn 2 ghi: 'They become eager to learn, develop new skills, and overcome challenges.'<br>DỊCH NGHĨA: Họ trở nên khát khao học hỏi, phát triển các kỹ năng mới.", targetPara: "ex18-p3-s2" },
+                    { id: "18-3-3", type: "mcq", text: "❸ Q3: Why might it be challenging to focus on a passion?", options: ["Friends are not interested", "Family expectations conflict", "Personal aspirations are unclear", "Pursuing passions is effortless"], correct: "Family expectations conflict", explanation: "ĐÁP ÁN: B. Family expectations conflict<br>DẪN CHỨNG: Đoạn 3: 'family expectations can seem at odds with personal aspirations.'<br>DỊCH NGHĨA: Kỳ vọng của gia đình có vẻ mâu thuẫn, trái ngược với nguyện vọng cá nhân.<br>TỪ ĐỒNG NGHĨA: at odds with = conflict (mâu thuẫn, xung đột).", targetPara: "ex18-p3-s3" },
+                    { id: "18-3-4", type: "mcq", text: "❸ Q4: According to the passage, why do teenagers experience a sense of purpose when pursuing their passions?", options: ["They want to impress their friends", "They need to overcome challenges", "They become motivated", "They love music"], correct: "They become motivated", explanation: "ĐÁP ÁN: C. They become motivated<br>DẪN CHỨNG: Đoạn 2: 'When teenagers pursue their passions, they often experience a sense of purpose and motivation.'<br>DỊCH NGHĨA: Khi theo đuổi đam mê, họ thường cảm nhận được ý nghĩa cuộc sống và động lực.", targetPara: "ex18-p3-s2" },
+                    { id: "18-3-5", type: "mcq", text: "❸ Q5: What does the word “perseverance” in the passage mostly mean?", options: ["laziness", "determination", "indifference", "confusion"], correct: "determination", explanation: "ĐÁP ÁN: B. determination<br>DẪN CHỨNG: 'pursuing a passion requires commitment and perseverance.'<br>DỊCH NGHĨA: theo đuổi đam mê đòi hỏi sự cam kết và lòng kiên trì bền bỉ.<br>TỪ ĐỒNG NGHĨA: perseverance = determination (lòng quyết tâm, sự kiên định không bỏ cuộc).", targetPara: "ex18-p3-s3" },
+
+                    { id: "18-4-1", type: "mcq", text: "❹ Q1: What is the main idea of the passage?", options: ["Teenagers struggle with balancing school and extracurricular activities.", "The challenges of being a teenager resemble a three-ring circus.", "Prioritizing tasks is essential for managing stress.", "Social interactions contribute to personal development."], correct: "The challenges of being a teenager resemble a three-ring circus.", explanation: "ĐÁP ÁN: B. The challenges of being a teenager resemble a three-ring circus.<br>DẪN CHỨNG: Ngay câu mở đầu đoạn 1 mang tính luận điểm bao trùm: 'Being a teenager is like navigating a three-ring circus.' Các câu sau triển khai các áp lực giống như các vòng xiếc.", targetPara: "ex18-p4-s1" },
+                    { id: "18-4-2", type: "mcq", text: "❹ Q2: The word “juggling” in the passage is closest in meaning to __________.", options: ["balancing", "dropping", "ignoring", "performing tricks"], correct: "balancing", explanation: "ĐÁP ÁN: A. balancing<br>DẪN CHỨNG: Từ câu đầu sang câu 2 đoạn 2: 'This constant balancing act can be challenging.' bổ nghĩa trực tiếp cho hành động tung hứng/cân bằng nhiều vai trò gánh vác cùng một lúc.", targetPara: "ex18-p4-s2" },
+                    { id: "18-4-3", type: "mcq", text: "❹ Q3: What contributes to the feeling of being \"stretched thin\" for teenagers?", options: ["Social interactions with friends and family", "Unexpected events and changes in plans", "Academic exams and homework", "Extracurricular activities"], correct: "Social interactions with friends and family", explanation: "ĐÁP ÁN: A. Social interactions with friends and family<br>DẪN CHỨNG: 'Add to that the ever-present desire for social interaction with friends and family, and it’s no wonder teenagers often feel stretched thin.'", targetPara: "ex18-p4-s1" },
+                    { id: "18-4-4", type: "mcq", text: "❹ Q4: How do diverse experiences contribute to teenagers' personal development?", options: ["By improving time management skills", "By enhancing social interactions", "By teaching organization", "By fostering self-discovery"], correct: "By fostering self-discovery", explanation: "ĐÁP ÁN: D. By fostering self-discovery<br>DẪN CHỨNG: Đoạn cuối ghi: 'contribute to personal development and self-discovery.'<br>TỪ ĐỒNG NGHĨA: foster = contribute to / thúc đẩy phát triển.", targetPara: "ex18-p4-s3" },
+                    { id: "18-4-5", type: "mcq", text: "❹ Q5: According to the passage, which of the following sentences is TRUE?", options: ["Teenagers should avoid extracurricular activities.", "Unexpected events never disrupt teenagers' schedules.", "Handling pressure is a valuable skill learned by teenagers.", "Social interactions hinder personal development."], correct: "Handling pressure is a valuable skill learned by teenagers.", explanation: "ĐÁP ÁN: C. Handling pressure is a valuable skill learned by teenagers.<br>DẪN CHỨNG: Ở đoạn cuối ghi rõ: 'They learn to be responsible, handle pressure, and adapt to changing situations.'", targetPara: "ex18-p4-s3" },
+
+                    { id: "19-a-1", type: "tfng", text: "❺ True/False 1: Mary has a friend to remind her of the assignments and deadlines.", correct: "FALSE", explanation: "ĐÁP ÁN: FALSE<br>DẪN CHỨNG: 'She uses an app to stay organized... the app helps her receive reminders...'<br>DỊCH NGHĨA: Cô ấy sử dụng một ứng dụng di động để gửi lời nhắc nhở chứ không phải có một người bạn nhắc bài.", targetPara: "ex19-p1-s1" },
+                    { id: "19-a-2", type: "tfng", text: "❺ True/False 2: Mary often spends excessive time on online social media.", correct: "FALSE", explanation: "ĐÁP ÁN: FALSE<br>DẪN CHỨNG: 'limiting her usage to an hour each day to avoid wasting her time.'<br>DỊCH NGHĨA: Mary giới hạn chỉ dùng 1 tiếng/ngày nên thông tin bảo dùng quá nhiều (excessive) là sai.", targetPara: "ex19-p1-s1" },
+                    { id: "19-a-3", type: "tfng", text: "❺ True/False 3: Mary spends all her free time volunteering at a local charity.", correct: "FALSE", explanation: "ĐÁP ÁN: FALSE<br>DẪN CHỨNG: Ngoài làm tình nguyện cô ấy còn đi xem phim, đi mua sắm vào cuối tuần cùng bạn bè ('going to the cinema, shopping...'). Do đó từ 'all' làm câu bị sai.", targetPara: "ex19-p1-s1" },
+                    { id: "19-a-4", type: "tfng", text: "❺ True/False 4: On the day James works overtime, he can’t finish all the tasks on time.", correct: "FALSE", explanation: "ĐÁP ÁN: FALSE<br>DẪN CHỨNG: 'On the day when he must work overtime... makes sure everything gets completed on time.'<br>DỊCH NGHĨA: Anh ấy luôn đảm bảo mọi thứ được hoàn thành đúng hạn.", targetPara: "ex19-p1-s2" },
+                    { id: "19-a-5", type: "tfng", text: "❺ True/False 5: James and his wife divide their housework.", correct: "TRUE", explanation: "ĐÁP ÁN: TRUE<br>DẪN CHỨNG: 'James and his wife share the housework, taking turns cooking and cleaning...'<br>TỪ ĐỒNG NGHĨA: divide = share / taking turns (chia sẻ, san sẻ công việc nhà theo ca).", targetPara: "ex19-p1-s2" },
+                    { id: "19-a-6", type: "tfng", text: "❺ True/False 6: Going to the gym helps James keep fit and relax.", correct: "TRUE", explanation: "ĐÁP ÁN: TRUE<br>DẪN CHỨNG: 'James keeps fit by playing football... and going to the gym, which helps him relax and clear his mind.'", targetPara: "ex19-p1-s2" },
+
+                    { id: "19-b-1", type: "matching", text: "❺ Grid 1: volunteers to gain more experience", options: ["Mary", "James", "Both"], correct: "Mary", explanation: "ĐÁP ÁN: Mary<br>DẪN CHỨNG: Phần Mary: 'She also does some volunteer work at a local charity, which provides valuable academic experience...'", targetPara: "ex19-p1-s1" },
+                    { id: "19-b-2", type: "matching", text: "❺ Grid 2: creates a to-do list to plan their day", options: ["Mary", "James", "Both"], correct: "Both", explanation: "ĐÁP ÁN: Both<br>DẪN CHỨNG: Mary làm 'daily to-do list'. James bắt đầu ngày bằng cách 'making a to-do list'. Vì vậy cả hai người đều áp dụng phương thức này.", targetPara: "ex19-p1-s2" },
+                    { id: "19-b-3", type: "matching", text: "❺ Grid 3: manages time by using an organizing app", options: ["Mary", "James", "Both"], correct: "Mary", explanation: "ĐÁP ÁN: Mary<br>DẪN CHỨNG: Chỉ có đoạn của Mary đề cập: 'She uses an app to stay organized...'", targetPara: "ex19-p1-s1" },
+                    { id: "19-b-4", type: "matching", text: "❺ Grid 4: relaxes by playing sports", options: ["Mary", "James", "Both"], correct: "James", explanation: "ĐÁP ÁN: James<br>DẪN CHỨNG: Đoạn của James ghi: 'keeps fit by playing football with friends... helps him relax'.", targetPara: "ex19-p1-s2" },
+                    { id: "19-b-5", type: "matching", text: "❺ Grid 5: thinks that social media can be distracting and waste their time", options: ["Mary", "James", "Both"], correct: "Both", explanation: "ĐÁP ÁN: Both<br>DẪN CHỨNG: Mary giới hạn mạng xã hội 'to avoid wasting her time'. James chủ động 'turns off email and social media notifications' để tránh xao nhãng 'avoid distractions'.", targetPara: "ex19-p1-s2" },
+                    { id: "19-b-6", type: "matching", text: "❺ Grid 6: shares household chores with a partner", options: ["Mary", "James", "Both"], correct: "James", explanation: "ĐÁP ÁN: James<br>DẪN CHỨNG: Đoạn của James ghi: 'James and his wife share the housework, taking turns...'", targetPara: "ex19-p1-s2" },
+
+                    { id: "20-1-1", type: "fill", text: "❻ Clause Blank (1)", correct: "Rather, it's about eating well-balanced meals that leave you feeling great", explanation: "ĐÁP ÁN: C. Rather, it's about eating well-balanced meals...<br>DẪN CHỨNG: Câu trước nói 'Healthy eating is not about...'. Từ nối 'Rather' (Thay vào đó) mở đầu cho mệnh đề khẳng định bản chất thực của chế độ ăn uống điều độ.", targetPara: "ex20-p1-s1" },
+                    { id: "20-1-2", type: "fill", text: "❻ Clause Blank (2)", correct: "you'll find another saying exactly the opposite", explanation: "ĐÁP ÁN: A. you'll find another saying exactly the opposite<br>DẪN CHỨNG: Cấu trúc song hành đối nghịch: 'for every expert who tells you a certain food is good for you, you'll find another saying exactly the opposite'.", targetPara: "ex20-p1-s1" },
+                    { id: "20-1-3", type: "fill", text: "❻ Clause Blank (3)", correct: "Eating well involves eating more foods that are closer to the way nature made them", explanation: "ĐÁP ÁN: D. Eating well involves eating more foods that are closer to the way nature made them<br>DẪN CHỨNG: Giải thích sâu cho cụm 'overall dietary pattern' ở câu liền trước, hướng dẫn ăn uống thực phẩm thô từ thiên nhiên.", targetPara: "ex20-p1-s1" },
+                    { id: "20-1-4", type: "fill", text: "❻ Clause Blank (4)", correct: "you can cut through the confusion and learn how to create-and stick to-a tasty", explanation: "ĐÁP ÁN: B. you can cut through the confusion and learn how to create-and stick to-a tasty<br>DẪN CHỨNG: Mệnh đề kết quả đi kèm trạng ngữ chỉ phương thức 'By using these simple tips, you can cut through the confusion...'.", targetPara: "ex20-p1-s1" },
+                    
+                    { id: "20-2-1", type: "fill", text: "❼ Clause Blank (1)", correct: "We can manage our time effectively by following some of these strategies", explanation: "ĐÁP ÁN: C. We can manage our time effectively by following some of these strategies<br>DẪN CHỨNG: Đây là câu chủ đề (Topic sentence) đứng đầu đoạn văn giới thiệu các phương pháp quản lý quỹ thời gian ('Firstly, Next, Thirdly...').", targetPara: "ex20-p2-s1" },
+                    { id: "20-2-2", type: "fill", text: "❼ Clause Blank (2)", correct: "it is important to learn to say no to distractions", explanation: "ĐÁP ÁN: A. it is important to learn to say no to distractions<br>DẪN CHỨNG: Liên từ giải thích bổ trợ phía sau: 'and time-wasting activities such as checking social media. Instead, you should focus...'. Distractions đồng nghĩa với mạng xã hội xao nhãng.", targetPara: "ex20-p2-s1" },
+                    { id: "20-2-3", type: "fill", text: "❼ Clause Blank (3)", correct: "it is essential to regularly review and adjust your schedule to ensure", explanation: "ĐÁP ÁN: D. it is essential to regularly review and adjust your schedule to ensure<br>DẪN CHỨNG: Đi liền bổ ngữ phía sau: 'that you are making progress towards your goals...'. Đảm bảo lịch trình được rà soát liên tục.", targetPara: "ex20-p2-s1" },
+                    { id: "20-2-4", type: "fill", text: "❼ Clause Blank (4)", correct: "By following these tips, you can make the most of your time", explanation: "ĐÁP ÁN: B. By following these tips, you can make the most of your time<br>DẪN CHỨNG: Câu kết luận tóm lược giá trị cho cả đoạn văn, dẫn tới hệ quả 'be more productive, and achieve success'.", targetPara: "ex20-p2-s1" }
+                ]
+            }
+        };
+
+        // RUNTIME RUN METHOD APP GLOBAL STATE
+        let appState = {
+            activeTab: 1,
+            timeRemaining: 1500, // 25 minutes
+            timerActive: false,
+            timerWorker: null,
+            userResponses: {},
+            shuffledMcqDatabase: {}
+        };
+
+        // NATIVE WEB AUDIO API SYNTHESIZER FOR IMMEDIATE FEEDBACK SOUNDS
+        function playSfxChime(isCorrectTone) {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                const now = ctx.currentTime;
+
+                if (isCorrectTone) {
+                    // Twin high-pitched crystal ding notes
+                    const freqs = [587.33, 880.00]; // D5, A5
+                    freqs.forEach((f, i) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(f, now + i * 0.08);
+                        gain.gain.setValueAtTime(0.15, now + i * 0.08);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.3);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + i * 0.08);
+                        osc.stop(now + i * 0.08 + 0.35);
+                    });
+                } else {
+                    // Slurring downward buzzer effect "tèo tèo tèo"
+                    const freqs = [180.00, 150.00, 110.00];
+                    freqs.forEach((f, i) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(f, now + i * 0.12);
+                        gain.gain.setValueAtTime(0.08, now + i * 0.12);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.4);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + i * 0.12);
+                        osc.stop(now + i * 0.12 + 0.45);
+                    });
+                }
+            } catch (e) {
+                console.log("Audio node syntax blocked or uninitialized.", e);
+            }
+        }
+
+        // CANVAS CONFETTI SPLASH GENERATOR
+        function triggerConfettiBurst() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let particles = [];
+            
+            for (let i = 0; i < 120; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 5 + 4,
+                    d: Math.random() * canvas.height,
+                    color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+                    tilt: Math.random() * 10 - 5,
+                    tiltAngleIncremental: Math.random() * 0.05 + 0.02,
+                    tiltAngle: 0
+                });
+            }
+
+            function drawConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let liveCount = 0;
+                particles.forEach((p, idx) => {
+                    p.tiltAngle += p.tiltAngleIncremental;
+                    p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+                    p.x += Math.sin(p.tiltAngle);
+                    p.tilt = Math.sin(p.tiltAngle - (idx / 3)) * 12;
+
+                    if (p.y < canvas.height) {
+                        liveCount++;
+                        ctx.beginPath();
+                        ctx.lineWidth = p.r;
+                        ctx.strokeStyle = p.color;
+                        ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+                        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+                        ctx.stroke();
+                    }
+                });
+                if (liveCount > 0) requestAnimationFrame(drawConfetti);
+            }
+            drawConfetti();
+        }
+
+        // INITIALIZER LOADER
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeOptionsOrder();
+            switchActiveTab(1);
+            document.getElementById('timer-control-btn').addEventListener('click', toggleTimerMechanism);
+            document.getElementById('main-submission-btn').addEventListener('click', computeFinalEvaluationScore);
+            
+            // Highlight text capture event listener
+            document.addEventListener('mouseup', executeTextHighlightCapture);
+        });
+
+        // SHUFFLE ALGORITHM FOR QUESTIONS WRAPPER
+        function initializeOptionsOrder() {
+            for (let tabId in appDataset) {
+                appDataset[tabId].questions.forEach(q => {
+                    if (q.options) {
+                        let cloneArr = [...q.options];
+                        // Knuth Fisher-Yates Shuffle
+                        for (let i = cloneArr.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [cloneArr[i], cloneArr[j]] = [cloneArr[j], cloneArr[i]];
+                        }
+                        appState.shuffledMcqDatabase[q.id] = cloneArr;
+                    }
+                });
+            }
+        }
+
+        // MOUSE SELECTION TO PINK PASTEL HIGHLIGHTER
+        function executeTextHighlightCapture() {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0) return;
+            const selectedText = selection.toString().trim();
+            if (selectedText.length < 2) return; // ignore random spacing clicks
+
+            let containerNode = selection.anchorNode;
+            let isValidSelectionRange = false;
+            while (containerNode && containerNode.nodeName !== 'BODY') {
+                if (containerNode.id === 'left-passage-viewport') {
+                    isValidSelectionRange = true;
+                    break;
+                }
+                containerNode = containerNode.parentNode;
+            }
+
+            if (isValidSelectionRange) {
+                try {
+                    const range = selection.getRangeAt(0);
+                    const markTag = document.createElement('mark');
+                    markTag.style.backgroundColor = "rgba(255, 182, 193, 0.85)";
+                    markTag.style.borderRadius = "4px";
+                    markTag.style.padding = "1px 3px";
+                    range.surroundContents(markTag);
+                    selection.removeAllRanges();
+                } catch (err) {
+                    console.log("Complex DOM hierarchy selection wrapped internally.");
+                }
+            }
+        }
+
+        // TAB VIEW SWITCH MECHANISM
+        function switchActiveTab(tabIndex) {
+            appState.activeTab = tabIndex;
+            
+            // Loop through navigational anchors to shift styling
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`tab-btn-${i}`);
+                if (i === tabIndex) {
+                    btn.className = "px-4 py-2 rounded-xl font-black text-sm border-b-4 bg-pink-500 text-white border-pink-700 transition-all flex items-center gap-1.5 shadow-sm";
+                } else {
+                    btn.className = "px-4 py-2 rounded-xl font-black text-sm border-b-4 bg-white text-gray-600 border-gray-300 transition-all flex items-center gap-1.5 shadow-sm";
+                }
+            }
+
+            renderLeftPanePassages();
+            renderRightPaneExercises();
+            refreshTabProgressStatus();
+        }
+
+        // LEFT MULTI-PASSAGE RENDER ENGINE
+        function renderLeftPanePassages() {
+            const targetData = appDataset[appState.activeTab];
+            const leftContainer = document.getElementById('left-passage-viewport');
+            leftContainer.innerHTML = '';
+
+            // Main heading text cards
+            const headerBlock = document.createElement('div');
+            headerBlock.className = "bg-gradient-to-r from-pink-100 to-purple-100 border-2 border-pink-300 rounded-2xl p-4 text-center shadow-sm";
+            headerBlock.innerHTML = `
+                <h3 class="text-xl font-black text-purple-900">${targetData.title}</h3>
+                <p class="text-xs font-bold text-pink-600 mt-0.5">${targetData.subtitle}</p>
+            `;
+            leftContainer.appendChild(headerBlock);
+
+            // Print paragraphs out sequentially
+            targetData.passages.forEach(psg => {
+                const sectionWrapper = document.createElement('article');
+                sectionWrapper.className = "bg-white border-2 border-purple-100 rounded-2xl p-4 space-y-3 shadow-inner mt-4";
+                sectionWrapper.innerHTML = `<h4 class="text-base font-black text-purple-700 tracking-wide bg-purple-50 px-3 py-1 rounded-lg inline-block">${psg.heading}</h4>`;
+                
+                psg.paragraphs.forEach(para => {
+                    const paragraphBlock = document.createElement('div');
+                    paragraphBlock.id = para.id;
+                    paragraphBlock.className = "p-2 transition-all duration-300 border border-transparent";
+                    paragraphBlock.innerHTML = `
+                        <p class="text-gray-800 text-base font-bold leading-relaxed select-text">${para.text}</p>
+                        <button onclick="toggleTranslationBox('${para.id}')" class="mt-2 text-pink-600 bg-pink-50 hover:bg-pink-100 border border-pink-200 text-xs font-extrabold px-3 py-1 rounded-xl btn-3d flex items-center gap-1">
+                            <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> Mở dịch đoạn này 🌟
+                        </button>
+                        <div id="translation-box-${para.id}" class="hidden mt-2 bg-pink-50/60 border-l-4 border-pink-400 p-3 rounded-xl text-sm font-semibold italic text-gray-700 leading-relaxed select-text">
+                            ${para.translation}
+                        </div>
+                    `;
+                    sectionWrapper.appendChild(paragraphBlock);
+                });
+
+                // Inject glossary matrix for vocabulary enrichment
+                const glossaryBox = document.createElement('div');
+                glossaryBox.className = "mt-4 pt-3 border-t-2 border-dashed border-pink-200";
+                glossaryBox.innerHTML = `
+                    <h5 class="text-xs font-black text-pink-600 uppercase tracking-widest mb-2 flex items-center gap-1">
+                        <i class="fa-solid fa-book text-xs"></i> Ms Lê Hằng Glossary Extract
+                    </h5>
+                    <div class="overflow-x-auto rounded-xl border border-pink-200">
+                        <table class="w-full text-xs text-left">
+                            <thead class="bg-pink-100 text-pink-700 font-black">
+                                <tr>
+                                    <th class="p-2">Academic Word</th>
+                                    <th class="p-2">Type</th>
+                                    <th class="p-2">Nghĩa Tiếng Việt & Synonyms Mapped</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-pink-100 bg-white font-bold text-gray-600">
+                                ${psg.glossary.map(g => `
+                                    <tr class="hover:bg-pink-50/30">
+                                        <td class="p-2 text-purple-700 font-extrabold">${g.word}</td>
+                                        <td class="p-2"><span class="bg-purple-100 text-purple-600 text-[10px] px-1 rounded">${g.pos}</span></td>
+                                        <td class="p-2 text-gray-700 font-semibold">${g.meaning} <span class="block text-[11px] text-pink-500 italic font-medium">🔄 Syn: ${g.synonym}</span></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+                sectionWrapper.appendChild(glossaryBox);
+                leftContainer.appendChild(sectionWrapper);
+            });
+        }
+
+        function toggleTranslationBox(paraId) {
+            const block = document.getElementById(`translation-box-${paraId}`);
+            if (block) block.classList.toggle('hidden');
+        }
+
+        // RIGHT PANE DYNAMIC EXERCISE INJECTOR
+        function renderRightPaneExercises() {
+            const targetQuestions = appDataset[appState.activeTab].questions;
+            const rightContainer = document.getElementById('right-exercises-viewport');
+            rightContainer.innerHTML = '';
+
+            targetQuestions.forEach((q, idx) => {
+                const questionCard = document.createElement('div');
+                questionCard.id = `q-card-${q.id}`;
+                questionCard.className = "bg-white border-4 border-pink-100 rounded-3xl p-4 shadow-sm space-y-3 transition-all";
+                
+                // Formulate header details
+                const headerDetail = document.createElement('div');
+                headerDetail.className = "flex items-center justify-between";
+                headerDetail.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="w-7 h-7 bg-purple-600 text-white font-black rounded-full flex items-center justify-center text-xs border-b-2 border-purple-800 shadow-sm">${idx + 1}</span>
+                        <span class="text-[11px] font-black uppercase px-2 py-0.5 bg-purple-100 text-purple-700 rounded-md">${q.type.toUpperCase()} TYPE</span>
+                    </div>
+                `;
+                questionCard.appendChild(headerDetail);
+
+                // Main query wording
+                const queryText = document.createElement('p');
+                queryText.className = "text-base font-extrabold text-gray-800 leading-snug select-text";
+                queryText.innerHTML = q.text;
+                questionCard.appendChild(queryText);
+
+                // Form interactive UI based on data variations
+                const interfaceWrapper = document.createElement('div');
+                interfaceWrapper.className = "pt-1";
+
+                if (q.type === 'mcq') {
+                    interfaceWrapper.className = "grid grid-cols-1 gap-2";
+                    const shuffledOpts = appState.shuffledMcqDatabase[q.id] || q.options;
+                    shuffledOpts.forEach(opt => {
+                        const optBtn = document.createElement('button');
+                        optBtn.className = "w-full text-left bg-pink-50/40 hover:bg-pink-50 font-bold p-3 rounded-2xl border-2 border-pink-100 text-sm transition-all btn-3d text-gray-700 flex items-center justify-between";
+                        optBtn.innerHTML = `<span>${opt}</span>`;
+                        optBtn.onclick = () => evaluateChoiceResponse(q.id, opt, optBtn);
+                        interfaceWrapper.appendChild(optBtn);
+                    });
+                } 
+                else if (q.type === 'tfng') {
+                    interfaceWrapper.className = "flex flex-wrap gap-2";
+                    ["TRUE", "FALSE", "NOT GIVEN"].forEach(val => {
+                        const tfngBtn = document.createElement('button');
+                        tfngBtn.className = "bg-pink-50/40 hover:bg-pink-50 text-gray-700 font-extrabold px-4 py-2 rounded-2xl border-2 border-pink-100 transition-all btn-3d text-xs";
+                        tfngBtn.textContent = val;
+                        tfngBtn.onclick = () => evaluateChoiceResponse(q.id, val, tfngBtn);
+                        interfaceWrapper.appendChild(tfngBtn);
+                    });
+                }
+                else if (q.type === 'matching') {
+                    interfaceWrapper.className = "flex flex-wrap gap-2";
+                    q.options.forEach(opt => {
+                        const matchBtn = document.createElement('button');
+                        matchBtn.className = "bg-pink-50/40 hover:bg-pink-50 text-purple-950 font-extrabold px-3 py-1.5 rounded-2xl border-2 border-pink-100 transition-all btn-3d text-xs";
+                        matchBtn.textContent = opt;
+                        matchBtn.onclick = () => evaluateChoiceResponse(q.id, opt, matchBtn);
+                        interfaceWrapper.appendChild(matchBtn);
+                    });
+                }
+                else if (q.type === 'fill') {
+                    interfaceWrapper.className = "flex gap-2 items-center";
+                    interfaceWrapper.innerHTML = `
+                        <input type="text" id="fill-input-${q.id}" class="flex-grow border-4 border-pink-200 focus:border-pink-400 p-2.5 rounded-2xl outline-none font-bold text-sm bg-pink-50/20" placeholder="Nhập từ vựng cần điền..." />
+                        <button onclick="evaluateFillResponse('${q.id}')" class="bg-pink-500 text-white font-black px-4 py-2.5 rounded-2xl border-b-4 border-pink-700 btn-3d hover:bg-pink-400 text-xs uppercase tracking-wide">Check</button>
+                    `;
+                }
+
+                questionCard.appendChild(interfaceWrapper);
+
+                // Explanation sub-frame panel
+                const explanationPanel = document.createElement('div');
+                explanationPanel.id = `expl-panel-${q.id}`;
+                explanationPanel.className = "hidden bg-emerald-50/90 border-2 border-emerald-200 p-3.5 rounded-2xl text-xs font-medium text-gray-700 space-y-2 select-text";
+                questionCard.appendChild(explanationPanel);
+
+                rightContainer.appendChild(questionCard);
+
+                // Restore if item has state recorded in session memory database
+                if (appState.userResponses[q.id]) {
+                    rebuildHistoricalAnswerUI(q.id);
+                }
+            });
+        }
+
+        // EVALUATE CHOICE SUBMISSIONS (MCQ, TFNG, MATCHING)
+        function evaluateChoiceResponse(qId, selectedText, elementNode) {
+            const q = locateQuestionObject(qId);
+            const isCorrect = selectedText === q.correct;
+
+            appState.userResponses[qId] = { selected: selectedText, isCorrect: isCorrect };
+            
+            triggerImmediateFeedbackAnimation(isCorrect, qId);
+            rebuildHistoricalAnswerUI(qId);
+            refreshTabProgressStatus();
+        }
+
+        // EVALUATE TEXT BLANK FILL SUBMISSIONS
+        function evaluateFillResponse(qId) {
+            const inputField = document.getElementById(`fill-input-${qId}`);
+            if (!inputField) return;
+            const rawValue = inputField.value.trim();
+            if (!rawValue) return;
+
+            const q = locateQuestionObject(qId);
+            // Case-insensitive assessment standard
+            const isCorrect = rawValue.toLowerCase() === q.correct.toLowerCase();
+
+            appState.userResponses[qId] = { selected: rawValue, isCorrect: isCorrect };
+
+            triggerImmediateFeedbackAnimation(isCorrect, qId);
+            rebuildHistoricalAnswerUI(qId);
+            refreshTabProgressStatus();
+        }
+
+        // REBUILD COMPONENT RENDER TO FREEZE INTERACTIVE MODES UPON COMPLETED SUBMISSION
+        function rebuildHistoricalAnswerUI(qId) {
+            const q = locateQuestionObject(qId);
+            const stateRecord = appState.userResponses[qId];
+            const cardNode = document.getElementById(`q-card-${qId}`);
+            if (!cardNode) return;
+
+            // Paint master explanations
+            const panel = document.getElementById(`expl-panel-${qId}`);
+            panel.innerHTML = `
+                <div class="font-black text-emerald-800 text-sm flex items-center gap-1 uppercase tracking-wide">
+                    <i class="fa-solid fa-graduation-cap text-lg text-emerald-600"></i> Ms Lê Hằng Explanation:
+                </div>
+                <div class="leading-relaxed font-bold text-gray-700 space-y-1 bg-white/70 p-3 rounded-xl border border-emerald-100 shadow-inner">
+                    ${q.explanation}
+                </div>
+                <button onclick="smoothScrollToEvidenceParagraph('${q.targetPara}')" class="mt-2 bg-purple-600 text-white hover:bg-purple-500 font-extrabold px-3 py-1.5 rounded-xl text-[11px] transition-all border-b-4 border-purple-800 btn-3d flex items-center gap-1 shadow-sm">
+                    <i class="fa-solid fa-mouse-pointer animate-bounce"></i> Vị trí dẫn chứng trong bài đọc
+                </button>
+            `;
+            panel.classList.remove('hidden');
+
+            // Apply interactive styling states directly to choices buttons
+            if (q.type === 'mcq') {
+                const choicesBtns = cardNode.querySelectorAll('button');
+                choicesBtns.forEach(btn => {
+                    btn.disabled = true;
+                    const cleanText = btn.querySelector('span') ? btn.querySelector('span').textContent.trim() : btn.textContent.trim();
+                    if (cleanText === q.correct) {
+                        btn.className = "w-full text-left bg-emerald-500 text-white font-black p-3 rounded-2xl border-2 border-emerald-600 text-sm flex items-center justify-between animate-pop";
+                        btn.innerHTML += `<i class="fa-solid fa-circle-check text-lg"></i>`;
+                    } else if (cleanText === stateRecord.selected && stateRecord.selected !== q.correct) {
+                        btn.className = "w-full text-left bg-rose-500 text-white font-black p-3 rounded-2xl border-2 border-rose-600 text-sm flex items-center justify-between";
+                        btn.innerHTML += `<i class="fa-solid fa-circle-xmark text-lg"></i>`;
+                    } else {
+                        btn.className = "w-full text-left bg-gray-100 text-gray-400 font-bold p-3 rounded-2xl border border-gray-200 text-sm opacity-50 cursor-not-allowed";
+                    }
+                });
+            }
+            else if (q.type === 'tfng' || q.type === 'matching') {
+                const optionBtns = cardNode.querySelectorAll('button');
+                optionBtns.forEach(btn => {
+                    btn.disabled = true;
+                    const txt = btn.textContent.trim();
+                    if (txt === q.correct) {
+                        btn.className = "bg-emerald-500 text-white font-black px-4 py-2 rounded-2xl border-2 border-emerald-600 text-xs animate-pop";
+                    } else if (txt === stateRecord.selected && stateRecord.selected !== q.correct) {
+                        btn.className = "bg-rose-500 text-white font-black px-4 py-2 rounded-2xl border-2 border-rose-600 text-xs";
+                    } else {
+                        btn.className = "bg-gray-100 text-gray-400 font-bold px-4 py-2 rounded-2xl border border-gray-200 text-xs opacity-40 cursor-not-allowed";
+                    }
+                });
+            }
+            else if (q.type === 'fill') {
+                const boxInput = document.getElementById(`fill-input-${qId}`);
+                if (boxInput) {
+                    boxInput.value = stateRecord.selected;
+                    boxInput.disabled = true;
+                    boxInput.className = stateRecord.isCorrect 
+                        ? "flex-grow border-4 border-emerald-400 p-2.5 rounded-2xl font-black text-sm bg-emerald-50 text-emerald-800"
+                        : "flex-grow border-4 border-rose-400 p-2.5 rounded-2xl font-black text-sm bg-rose-50 text-rose-800";
+                }
+                const triggerCheckBtn = cardNode.querySelector('button');
+                if (triggerCheckBtn) triggerCheckBtn.disabled = true;
+            }
+        }
+
+        // FIND QUESTION ENTITY FROM ALL SEGMENTS
+        function locateQuestionObject(id) {
+            for (let tid in appDataset) {
+                const questionMatch = appDataset[tid].questions.find(item => item.id === id);
+                if (questionMatch) return questionMatch;
+            }
+            return null;
+        }
+
+        // TRIGGER IMMEDIATE SOUNDS AND SHAKE COMPONENT ANIMATIONS
+        function triggerImmediateFeedbackAnimation(isCorrect, qId) {
+            playSfxChime(isCorrect);
+            const targetCard = document.getElementById(`q-card-${qId}`);
+            if (!targetCard) return;
+
+            if (isCorrect) {
+                triggerConfettiBurst();
+                targetCard.classList.add('animate-pop');
+                setTimeout(() => targetCard.classList.remove('animate-pop'), 400);
+            } else {
+                targetCard.classList.add('animate-shake');
+                setTimeout(() => targetCard.classList.remove('animate-shake'), 400);
+            }
+        }
+
+        // REFRESH TAB GRAPHICS METERS
+        function refreshTabProgressStatus() {
+            const activeQuestions = appDataset[appState.activeTab].questions;
+            let solvedCounter = 0;
+            activeQuestions.forEach(q => {
+                if (appState.userResponses[q.id]) solvedCounter++;
+            });
+
+            const ratio = activeQuestions.length > 0 ? Math.round((solvedCounter / activeQuestions.length) * 100) : 0;
+            document.getElementById('tab-completion-badge').textContent = `Tiến độ: ${ratio}%`;
+            document.getElementById('tab-completion-progress-bar').style.width = `${ratio}%`;
+
+            // Calculate global scoreboard indicators
+            let overallScoreAccumulator = 0;
+            for (let idKey in appState.userResponses) {
+                if (appState.userResponses[idKey].isCorrect === true) {
+                    overallScoreAccumulator++;
+                }
+            }
+            document.getElementById('header-score-tracker').textContent = overallScoreAccumulator;
+        }
+
+        // DYNAMIC NAVIGATIONAL SOURCE paragraph LOVER
+        function smoothScrollToEvidenceParagraph(paragraphId) {
+            const paragraphTarget = document.getElementById(paragraphId);
+            if (paragraphTarget) {
+                paragraphTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                paragraphTarget.classList.add('flash-evidence');
+                
+                // Keep accordion visible so student reads translation effortlessly
+                const translationCollapseBlock = document.getElementById(`translation-box-${paragraphId}`);
+                if (translationCollapseBlock) translationCollapseBlock.classList.remove('hidden');
+
+                setTimeout(() => {
+                    paragraphTarget.classList.remove('flash-evidence');
+                }, 3000);
+            }
+        }
+
+        // COUNTDOWN TIMER ENGINE CONTEXT
+        function toggleTimerMechanism() {
+            if (appState.timerActive) {
+                clearInterval(appState.timerWorker);
+                appState.timerActive = false;
+                document.getElementById('timer-status-text').textContent = "TIẾP TỤC LÀM BÀI";
+                document.getElementById('timer-control-btn').className = "bg-blue-600 text-white font-black px-5 py-2 rounded-2xl btn-3d hover:bg-blue-500 text-sm flex items-center gap-2";
+            } else {
+                appState.timerActive = true;
+                document.getElementById('timer-status-text').textContent = "TẠM DỪNG";
+                document.getElementById('timer-control-btn').className = "bg-amber-500 text-white font-black px-5 py-2 rounded-2xl btn-3d hover:bg-amber-400 text-sm flex items-center gap-2";
+                
+                appState.timerWorker = setInterval(() => {
+                    appState.timeRemaining--;
+                    renderTimerStringData();
+
+                    if (appState.timeRemaining <= 0) {
+                        clearInterval(appState.timerWorker);
+                        appState.timerActive = false;
+                        alert("⏱️ Đã hết giờ làm bài. Bạn vẫn có thể tiếp tục làm, nhưng nhớ là trong phòng thi thật, bạn chỉ nên làm một bài như thế này trong 20-25 phút thôi nha.");
+                    }
+                }, 1000);
+            }
+        }
+
+        function renderTimerStringData() {
+            const minutesVal = Math.floor(appState.timeRemaining / 60);
+            const secondsVal = appState.timeRemaining % 60;
+            document.getElementById('timer-countdown-clock').textContent = `${minutesVal.toString().padStart(2, '0')}:${secondsVal.toString().padStart(2, '0')}`;
+        }
+
+        // SCORE COMPILATION & MODAL DISPLAY WRAPPER
+        function computeFinalEvaluationScore() {
+            let totalCorrectAnswers = 0;
+            const grandTotalQuestionCount = 45;
+
+            for (let id in appState.userResponses) {
+                if (appState.userResponses[id].isCorrect === true) {
+                    totalCorrectAnswers++;
+                }
+            }
+
+            let textFeedback = "Cố lên nhé! Đọc kỹ các phần giải thích chi tiết của Ms Lê Hằng dưới mỗi câu sai để lượm nhặt từ vựng xịn xò nha!";
+            if (totalCorrectAnswers === grandTotalQuestionCount) {
+                textFeedback = "THIÊN TÀI NGÔN NGỮ ĐÍCH THỰC! 🌟 Đạt điểm tuyệt đối 45/45! Thạc sỹ Lê Hằng cực kỳ tự hào về tài năng xuất chúng của con!";
+                triggerConfettiBurst();
+            } else if (totalCorrectAnswers >= 36) {
+                textFeedback = "LÀM TỐT LẮM - MỘT THÀNH TÍCH ĐÁNG KINH NGẠC! 🎈 Kỹ năng đọc hiểu siêu phàm, sẵn sàng chinh phục mọi nấc thang điểm số cao nhất.";
+                triggerConfettiBurst();
+            } else if (totalCorrectAnswers >= 22) {
+                textFeedback = "RẤT KHÁ! 🌱 Con đã nắm vững cốt lõi bài thi. Hãy ôn tập kỹ bảng từ đồng nghĩa (synonyms) để bứt phá lên mức điểm rực rỡ hơn.";
+            }
+
+            document.getElementById('modal-score-string').textContent = `${totalCorrectAnswers} / ${grandTotalQuestionCount}`;
+            document.getElementById('modal-performance-feedback').textContent = textFeedback;
+            toggleModalVisibility(true);
+        }
+
+        function toggleModalVisibility(shouldDisplay) {
+            const popup = document.getElementById('results-modal');
+            if (shouldDisplay) popup.classList.remove('hidden');
+            else popup.classList.add('hidden');
+        }
+
+        // APP TOTAL RESET
+        function resetFullApplicationState() {
+            appState.userResponses = {};
+            appState.timeRemaining = 1500;
+            appState.timerActive = false;
+            if (appState.timerWorker) clearInterval(appState.timerWorker);
+            
+            renderTimerStringData();
+            document.getElementById('timer-status-text').textContent = "BẮT ĐẦU TÍNH GIỜ LÀM BÀI";
+            document.getElementById('timer-control-btn').className = "bg-purple-600 text-white font-black px-5 py-2 rounded-2xl btn-3d hover:bg-purple-500 text-sm flex items-center gap-2";
+            
+            toggleModalVisibility(false);
+            initializeOptionsOrder();
+            switchActiveTab(1);
+        }
+    </script>
+</body>
+</html>
